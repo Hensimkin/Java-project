@@ -24,7 +24,6 @@ import zoo.*;
  *
  */
 public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
-	JPanel jj;
 	int i = 0;
 	Plant plant = null;
 	Animal ao = null;
@@ -57,8 +56,20 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	 */
 	public ZooPanel1()
 	{
+		//this.setLayout(new BorderLayout());
+		try
+		{
+			pic = ImageIO.read(new File(BACKGROUND_PATH+"//"+"savanna.png"));
+
+			//this.repaint();
+		}
+
+		catch (IOException e)
+		{
+			System.out.println("Cannot load image");
+		}
+		this.setBackground(null);
 		this.setVisible(true);
-		this.setLayout(new BorderLayout());
 	}
 
 
@@ -111,8 +122,9 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 
 			//Graphics2D gr = (Graphics2D) g;
 			//g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-			//Dimension size = this.getSize();
-			g.drawImage(pic, 0, 0, this.getWidth(), this.getHeight(), this);
+			Dimension size = this.getSize();
+			//this.setBackground(null);
+			g.drawImage(pic, 0, 0, size.width, size.height, this);
 		}
 
 	}
@@ -142,17 +154,8 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 
      public void setImage()
 	 {
-		 this.setBackground(null);
-		 try
-		 {
-			 pic = ImageIO.read(new File(BACKGROUND_PATH+"//"+"savanna.png"));
-			 this.paintComponent(this.getGraphics());
-		 }
-
-		 catch (IOException e)
-		 {
-			 System.out.println("Cannot load image");
-		 }
+		 //this.setBackground(null);
+		 this.paintComponent(this.getGraphics());
 	 }
 
 	 public void setCheck(int num)
@@ -168,9 +171,3 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 
  */
 }
-
-
-
-
-
-

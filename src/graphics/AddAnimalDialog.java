@@ -45,9 +45,9 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 	/**
 	 * Default Contractor that add buttons to the panel 
 	 */
-	public AddAnimalDialog(ZooPanel1 zoo)
+	public AddAnimalDialog(ZooPanel1 zoo,ZooFrame frame)
 	{
-		super();
+		super(frame,"Add animal",true);
 		button=new JButton("Accept");
 		button.addActionListener(this);
 		JLabel label=new JLabel("Choose animal");
@@ -62,8 +62,8 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 		String colors[]= {"Natural","Blue","Red"};
 		this.setLayout(new GridLayout(6,1));
 		this.setSize(400,200);
-		this.setVisible(true);
-		this.setTitle("Add Animal");
+		//this.setVisible(true);
+		//this.setTitle("Add Animal");
 		list=new JComboBox(animals);
 		hor=new JComboBox(numbers);
 		ver=new JComboBox(numbers2);
@@ -88,6 +88,7 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 		this.add(label6);
 		this.add(button);
 		this.zoo=zoo;
+		this.setVisible(true);
 	}
 
 	/**
@@ -174,14 +175,14 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 						//MoveAnimalDialog.allAniaml.addItem(name);
 						size=(int) (size*0.8);
 						object=new Lion(name,size,c,num1,num2,zoo);
-						ZooPanel1.array.add(object);
+						zoo.array.add(object);
 						//ZooPanel1.array.get(0).getPanel().manageZoo();
-						ZooPanel1.data[i][0]=type;
-						ZooPanel1.data[i][1]=c;
-						ZooPanel1.data[i][2]=object.getWeight();
-						ZooPanel1.data[i][3]=num1;
-						ZooPanel1.data[i][4]=num2;
-						ZooPanel1.data[i][5]=object.getEatCount();
+						zoo.data[i][0]=type;
+						zoo.data[i][1]=c;
+						zoo.data[i][2]=object.getWeight();
+						zoo.data[i][3]=num1;
+						zoo.data[i][4]=num2;
+						zoo.data[i][5]=object.getEatCount();
 						i++;
 					}
 					if(type=="Bear")

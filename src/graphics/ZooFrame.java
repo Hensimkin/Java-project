@@ -137,8 +137,10 @@ public class ZooFrame extends JFrame implements ActionListener
 		
 		if (e.getSource()==image)
 		{
+
 			m1.setCheck(1);
 			m1.setImage();
+			//m1.setVisible(true);
 			//m1.repaint();
 			m1.setCheck(0);
           /*
@@ -225,7 +227,7 @@ public class ZooFrame extends JFrame implements ActionListener
 		{
 			if (AddAnimalDialog.i!=10)
 			{
-				a=new AddAnimalDialog(m1);
+				a=new AddAnimalDialog(m1,this);
 				m1.i++;
 			}
 			else
