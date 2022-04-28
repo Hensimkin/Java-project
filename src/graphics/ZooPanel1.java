@@ -94,7 +94,10 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		array.get(0).drawObject(g);
+		for(int i =0;i< array.size();i++)
+		{
+			array.get(i).drawObject(g);
+		}
 	}
 }
 

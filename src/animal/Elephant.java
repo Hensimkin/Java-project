@@ -40,6 +40,10 @@ public class Elephant extends Chew
 		super.setWeight(500);
 		setTrunkLengh(trunkLengh);
 		super.setDiet(diet);
+		this.z=z;
+		super.loadImages("elf");
+		super.setChanges(true);
+		this.z.repaint();
 	}
 	
 	/**

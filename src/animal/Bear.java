@@ -41,7 +41,7 @@ public class Bear extends Roar
 		setFurColor("GREY");
 		super.setDiet(diet);
 		this.z=z;
-		super.loadImages("lio");
+		super.loadImages("bea");
 		super.setChanges(true);
 		this.z.repaint();
 	}

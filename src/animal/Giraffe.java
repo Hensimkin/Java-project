@@ -41,6 +41,10 @@ public class Giraffe extends Chew
 		super.setWeight(450);
 		setNeckLength(neckLength);
 		super.setDiet(diet);
+		this.z=z;
+		super.loadImages("grf");
+		super.setChanges(true);
+		this.z.repaint();
 	}
 	
 	

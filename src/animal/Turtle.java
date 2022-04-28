@@ -33,6 +33,7 @@ public class Turtle extends Chew
 		super.setWeight(1);
 		setAge(age);
 		super.setDiet(diet);
+
 	}
 	
 	public Turtle(String name,int size,String col,int horSpeed,int verSpeed,ZooPanel1 z)
@@ -41,6 +42,10 @@ public class Turtle extends Chew
 		super.setWeight(1);
 		setAge(age);
 		super.setDiet(diet);
+		this.z=z;
+		super.loadImages("trt");
+		super.setChanges(true);
+		this.z.repaint();
 	}
 	
 	
