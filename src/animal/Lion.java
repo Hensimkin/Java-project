@@ -22,7 +22,8 @@ import javax.swing.ImageIcon;
  */
 public class Lion extends Roar
 {
-	private final static Point start=new Point(20,0);
+	//private final Point start=new Point(20,0);
+	private Point start=new Point(20,0);
 	private final static IDiet diet=new Carnivore();
 	private int scarCount=0;
 	private ZooPanel1 z;
@@ -33,7 +34,7 @@ public class Lion extends Roar
 	 */
 	public Lion(String name)
 	{
-		super(name,start);
+		super(name,new Point(20,0));
 		MessageUtility.logConstractor("Lion", name);
 		super.setWeight(408.2);
 		super.setDiet(diet);
@@ -41,7 +42,7 @@ public class Lion extends Roar
 	
 	public Lion(String name,int size,String col,int horSpeed,int verSpeed,ZooPanel1 z)
 	{
-		super(name,start,size,col,horSpeed,verSpeed,z);
+		super(name,new Point(20,0),size,col,horSpeed,verSpeed,z);
 		super.setWeight(408.2);
 		super.setDiet(diet);
 		this.z=z;
@@ -58,7 +59,7 @@ public class Lion extends Roar
 	 */
 	public Lion(String name,Point point)
 	{
-		super(name,point);
+		super(name,new Point(20,0));
 		MessageUtility.logConstractor("Lion", name);
 		super.setWeight(408.2);
 		super.setDiet(diet);

@@ -29,6 +29,8 @@ public class MoveAnimalDialog extends JDialog implements ActionListener
 	 Point p;
 	 int lionc=1,bearc=1,elephantc=1,giraffec=1,turtlec=1;
 	 String f;
+	 String type2;
+	 int i2;
 	public MoveAnimalDialog()
 	{
 		this.setLayout(new GridLayout(4,1));
@@ -108,33 +110,36 @@ public class MoveAnimalDialog extends JDialog implements ActionListener
 				f=ZooPanel1.array.get(i).getName();
 				if(f.equals(type))
 				{
-					p=new Point(x,y);
-					ZooPanel1.array.get(i).setLocation(p);
-					ZooPanel1.array.get(i).setChanges(true);
-					JOptionPane.showMessageDialog(null, "Animal moved");
-					if(ZooPanel1.array.get(i) instanceof Lion)
-					{
-						((Lion)ZooPanel1.array.get(i)).dircheck(p);
-					}
-					if(ZooPanel1.array.get(i) instanceof Bear)
-					{
-						((Bear)ZooPanel1.array.get(i)).dircheck(p);
-					}
-					if(ZooPanel1.array.get(i) instanceof Giraffe)
-					{
-						((Giraffe)ZooPanel1.array.get(i)).dircheck(p);
-					}
-					if(ZooPanel1.array.get(i) instanceof Elephant)
-					{
-						((Elephant)ZooPanel1.array.get(i)).dircheck(p);
-					}
-					if(ZooPanel1.array.get(i) instanceof Turtle)
-					{
-						((Turtle)ZooPanel1.array.get(i)).dircheck(p);
-					}
-					dispose();
+					i2=i;
 				}
 			}
+			p=new Point(x,y);
+			ZooPanel1.array.get(i2).setLocation(p);
+			ZooPanel1.array.get(i2).setChanges(true);
+			ZooPanel1.array.get(i2).getPanel().repaint();
+			JOptionPane.showMessageDialog(null, "Animal moved");
+			if(ZooPanel1.array.get(i2) instanceof Lion)
+			{
+				((Lion)ZooPanel1.array.get(i2)).dircheck(p);
+			}
+			if(ZooPanel1.array.get(i2) instanceof Bear)
+			{
+				((Bear)ZooPanel1.array.get(i2)).dircheck(p);
+			}
+			if(ZooPanel1.array.get(i2) instanceof Giraffe)
+			{
+				((Giraffe)ZooPanel1.array.get(i2)).dircheck(p);
+			}
+			if(ZooPanel1.array.get(i2) instanceof Elephant)
+			{
+				((Elephant)ZooPanel1.array.get(i2)).dircheck(p);
+			}
+			if(ZooPanel1.array.get(i2) instanceof Turtle)
+			{
+				((Turtle)ZooPanel1.array.get(i2)).dircheck(p);
+			}
+			dispose();
+
 		}
 		
 	}

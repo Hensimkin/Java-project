@@ -120,7 +120,7 @@ public class ZooFrame extends JFrame implements ActionListener
 
 		this.add(downb, BorderLayout.SOUTH);
 		this.add(m1);
-
+		//m1.setVisible(true);
 		this.setVisible(true);
 		this.pack();
 		this.setSize(800,600);
@@ -137,7 +137,11 @@ public class ZooFrame extends JFrame implements ActionListener
 		
 		if (e.getSource()==image)
 		{
-			/*
+			m1.setCheck(1);
+			m1.setImage();
+			//m1.repaint();
+			m1.setCheck(0);
+          /*
 			try
 			{
 				
@@ -156,7 +160,9 @@ public class ZooFrame extends JFrame implements ActionListener
 		    {
 				System.out.println("Cant load picture");
 		    }
-		    */
+
+           */
+           // m1.setImage();
 		}
 		
 		if(e.getSource()==green)
@@ -168,9 +174,14 @@ public class ZooFrame extends JFrame implements ActionListener
 			m.setVisible(true);
 			//frame.add(m2);
 			frame.setVisible(true);
+
+
 			this.remove(label);
 			this.getContentPane().setBackground(Color.green);
-			*/
+
+			 */
+
+			m1.setGreen();
 		}
 		
 		if(e.getSource()==none)
@@ -180,9 +191,13 @@ public class ZooFrame extends JFrame implements ActionListener
 			m.repaint();
 			m.setVisible(true);
 			frame.setVisible(true);
+
+
 			this.remove(label);
 			this.getContentPane().setBackground(null);
-			*/
+
+			 */
+			m1.setNone();
 		}
 		
 		if(e.getSource()==help2)

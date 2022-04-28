@@ -32,6 +32,7 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	String name;
 	Table z;
 	Color c = null;
+	private int check=0;
 	private static final String BACKGROUND_PATH = "C:\\Users\\hanig\\Desktop\\assignment2_pictures";
 	private BufferedImage pic = null;
 	//static Animal[] array=new Animal[10];
@@ -40,6 +41,10 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	JTable table;
 	static String[] col = {"Animal", "Color", "weight", "Hor.Speed", "Ver.Speed", "Eat Counter"};
 	static Object[][] data = new Object[10][6];
+	private BufferedImage pic2=null;
+	private ImageIcon pic3;
+	private Image pic4;
+	//private JLabel label=new JLabel();
 
 
 	@Override
@@ -94,11 +99,74 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	public void paintComponent(Graphics g)
 	{
 		super.paintComponent(g);
-		for(int i =0;i< array.size();i++)
+		if (this.check==0)
 		{
-			array.get(i).drawObject(g);
+			for(int i =0;i< array.size();i++)
+			{
+				array.get(i).drawObject(g);
+			}
 		}
+		else
+		{
+
+			//Graphics2D gr = (Graphics2D) g;
+			//g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+			//Dimension size = this.getSize();
+			g.drawImage(pic, 0, 0, this.getWidth(), this.getHeight(), this);
+		}
+
 	}
+/*
+	public void paintComponent2(Graphics g)
+	{
+		super.paintComponent(g);
+		super.paintComponent(g);
+		Graphics2D gr = (Graphics2D) g;
+		gr.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		Dimension size = this.getSize();
+		gr.drawImage(img, 0, 0, size.width, size.height, this);
+	}
+*/
+
+	public void setGreen()
+	{
+		this.setBackground(null);
+		//this.paintComponent(this.getGraphics());
+		this.setBackground(Color.GREEN);
+	}
+
+	public void setNone()
+	{
+		this.setBackground(null);
+	}
+
+     public void setImage()
+	 {
+		 this.setBackground(null);
+		 try
+		 {
+			 pic = ImageIO.read(new File(BACKGROUND_PATH+"//"+"savanna.png"));
+			 this.paintComponent(this.getGraphics());
+		 }
+
+		 catch (IOException e)
+		 {
+			 System.out.println("Cannot load image");
+		 }
+	 }
+
+	 public void setCheck(int num)
+	 {
+		 this.check=num;
+	 }
+/*
+	public void setPic()
+	{
+		setBackground(null);
+		this.paintComponent2(this.getGraphics());
+	}
+
+ */
 }
 
 

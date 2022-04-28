@@ -39,7 +39,7 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 	String c="NoString";
     static int i=0;
     ImageIcon animal;
-    int lionc=1,bearc=1,elephantc=1,giraffec=1,turtlec=1;
+    static int lionc=1,bearc=1,elephantc=1,giraffec=1,turtlec=1;
     String name;
     ZooPanel1 zoo;
 	/**
@@ -170,6 +170,7 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 					if(type=="Lion")
 					{
 						name="Lion"+lionc;
+						lionc++;
 						//MoveAnimalDialog.allAniaml.addItem(name);
 						size=(int) (size*0.8);
 						object=new Lion(name,size,c,num1,num2,zoo);
@@ -186,6 +187,7 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 					if(type=="Bear")
 					{
 						name="Bear"+bearc;
+						bearc++;
 						//MoveAnimalDialog.allAniaml.addItem(name);
 						size=(int) (size*1.5);
 						object=new Bear(name,size,c,num1,num2,zoo);
@@ -202,6 +204,7 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 					if(type=="Elephant")
 					{
 						name="Elephant"+elephantc;
+						elephantc++;
 						//MoveAnimalDialog.allAniaml.addItem(name);
 						size=(int) (size*10);
 						object=new Elephant(name,size,c,num1,num2,zoo);
@@ -218,6 +221,7 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 					if(type=="Giraffe")
 					{
 						name="Giraffe"+giraffec;
+						giraffec++;
 						//MoveAnimalDialog.allAniaml.addItem(name);
 						size=(int) (size*2.2);
 						object=new Giraffe(name,size,c,num1,num2,zoo);
@@ -234,6 +238,7 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 					if(type=="Turtle")
 					{
 						name="Turtle"+turtlec;
+						turtlec++;
 						//MoveAnimalDialog.allAniaml.addItem(name);
 						size=(int) (size*0.5);
 						object=new Turtle(name,size,c,num1,num2,zoo);
