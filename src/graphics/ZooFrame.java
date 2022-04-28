@@ -37,22 +37,40 @@ public class ZooFrame extends JFrame implements ActionListener
 	private JMenuItem none;
 	private JMenuItem image;
 	private JMenuItem help2;
+	private JButton addanimal;
+	private JButton moveanimal;
+	private JButton clear;
+	private JButton food;
+	private JButton info;
+	private JButton exit2;
+	private AddAnimalDialog a;
+	private ZooPanel1 m1;
 
+	//private Object[][] data = new Object[10][6];
+
+	//private String[] col = {"Animal", "Color", "weight", "Hor.Speed", "Ver.Speed", "Eat Counter"};
+
+	private JTable table;
+    private Table z;
 	
 	
 	
 	public ZooFrame()
 	{
-		ZooPanel1 m=new ZooPanel1();
-		//m.setOpaque(false);
-		this.setName("Zoo");
-		this.setVisible(true);
-		this.setSize(800,600);
+		super("Zoo");
+        m1=new ZooPanel1();
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setLocationRelativeTo(null);
-		this.add(m,BorderLayout.PAGE_END);
+		//this.setLocationRelativeTo(null);
+		this.setLayout(new BorderLayout());
+		JPanel downb=new JPanel();
+		downb.setLayout(new FlowLayout());
+
+		//this.pack();
+		//this.setVisible(true);
+		//this.setSize(800,600);
+
+
 		label=new JLabel();
-		//this.add(label);
 		JMenuBar menuBar=new JMenuBar();
 		this.setJMenuBar(menuBar);
 		JMenu file=new JMenu("File");
@@ -75,7 +93,38 @@ public class ZooFrame extends JFrame implements ActionListener
 		none.addActionListener( this);
 		help2=new JMenuItem("Help");
 		help.add(help2);
-		help2.addActionListener(this);		
+		help2.addActionListener(this);
+
+        //this.add(m1);
+		addanimal=new JButton("Add Animal");
+		downb.add(this.addanimal);
+		this.addanimal.addActionListener(this);
+		moveanimal=new JButton("Move Animal");
+		downb.add(this.moveanimal);
+		this.moveanimal.addActionListener(this);
+		info=new JButton("Info");
+		downb.add(this.info);
+		this.info.addActionListener(this);
+		exit2=new JButton("Exit");
+		downb.add(this.exit2);
+		this.exit2.addActionListener(this);
+		clear=new JButton("Clear");
+		downb.add(this.clear);
+		this.clear.addActionListener(this);
+		food=new JButton("Food");
+		downb.add(this.food);
+		this.food.addActionListener(this);
+		this.add(downb,BorderLayout.SOUTH);
+		downb.setBackground(Color.blue);
+
+
+		this.add(downb, BorderLayout.SOUTH);
+		this.add(m1);
+
+		this.setVisible(true);
+		this.pack();
+		this.setSize(800,600);
+
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) 
@@ -88,7 +137,7 @@ public class ZooFrame extends JFrame implements ActionListener
 		
 		if (e.getSource()==image)
 		{
-			
+			/*
 			try
 			{
 				
@@ -107,7 +156,7 @@ public class ZooFrame extends JFrame implements ActionListener
 		    {
 				System.out.println("Cant load picture");
 		    }
-		    
+		    */
 		}
 		
 		if(e.getSource()==green)
@@ -119,10 +168,9 @@ public class ZooFrame extends JFrame implements ActionListener
 			m.setVisible(true);
 			//frame.add(m2);
 			frame.setVisible(true);
-			*/
 			this.remove(label);
 			this.getContentPane().setBackground(Color.green);
-			
+			*/
 		}
 		
 		if(e.getSource()==none)
@@ -132,10 +180,9 @@ public class ZooFrame extends JFrame implements ActionListener
 			m.repaint();
 			m.setVisible(true);
 			frame.setVisible(true);
-			*/
 			this.remove(label);
 			this.getContentPane().setBackground(null);
-			
+			*/
 		}
 		
 		if(e.getSource()==help2)
@@ -158,7 +205,43 @@ public class ZooFrame extends JFrame implements ActionListener
 			    }
 			});
 		}
-		
+
+		if(e.getSource()==addanimal)
+		{
+			if (AddAnimalDialog.i!=10)
+			{
+				a=new AddAnimalDialog(m1);
+				m1.i++;
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Can't add more animals","Error",JOptionPane.WARNING_MESSAGE);
+			}
+		}
+		if(e.getSource()==moveanimal)
+		{
+			if (ZooPanel1.array.isEmpty())
+			{
+				JOptionPane.showMessageDialog(null, "Can't move animals","Error",JOptionPane.WARNING_MESSAGE);
+			}
+			else
+			{
+				MoveAnimalDialog m=new MoveAnimalDialog();
+				m1.manageZoo();
+			}
+		}
+
+		if(e.getSource()==exit2)
+		{
+			System.exit(0);
+		}
+
+
+		if (e.getSource()==info)
+		{
+			table=new JTable(ZooPanel1.data,ZooPanel1.col);
+			z=new Table(table);
+		}
 	}
 	
 	public static void main(String[] args)
