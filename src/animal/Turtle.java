@@ -16,7 +16,7 @@ import utilities.*;
  */
 public class Turtle extends Chew
 {
-	private final static Point start=new Point(50,0);
+	private  Point start=new Point(50,0);
 	private final static IDiet diet=new Herbivore();
 	private int  age=1;
 	private ZooPanel1 z;
@@ -28,7 +28,7 @@ public class Turtle extends Chew
 	 */
 	public Turtle(String name)
 	{
-		super(name,start);
+		super(name,new Point(50,0));
 		MessageUtility.logConstractor("Turtle", name);
 		super.setWeight(1);
 		setAge(age);
@@ -38,7 +38,7 @@ public class Turtle extends Chew
 	
 	public Turtle(String name,int size,String col,int horSpeed,int verSpeed,ZooPanel1 z)
 	{
-		super(name,start,size,col,horSpeed,verSpeed,z);
+		super(name,new Point(50,0),size,col,horSpeed,verSpeed,z);
 		super.setWeight(1);
 		setAge(age);
 		super.setDiet(diet);

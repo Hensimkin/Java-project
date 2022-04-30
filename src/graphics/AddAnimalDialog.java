@@ -175,14 +175,14 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 						//MoveAnimalDialog.allAniaml.addItem(name);
 						size=(int) (size*0.8);
 						object=new Lion(name,size,c,num1,num2,zoo);
-						zoo.array.add(object);
+						ZooPanel1.array.add(object);
 						//ZooPanel1.array.get(0).getPanel().manageZoo();
-						zoo.data[i][0]=type;
-						zoo.data[i][1]=c;
-						zoo.data[i][2]=object.getWeight();
-						zoo.data[i][3]=num1;
-						zoo.data[i][4]=num2;
-						zoo.data[i][5]=object.getEatCount();
+						ZooPanel1.data[i][0]=type;
+						ZooPanel1.data[i][1]=c;
+						ZooPanel1.data[i][2]=object.getWeight();
+						ZooPanel1.data[i][3]=num1;
+						ZooPanel1.data[i][4]=num2;
+						ZooPanel1.data[i][5]=object.getEatCount();
 						i++;
 					}
 					if(type=="Bear")
@@ -254,6 +254,7 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 						i++;
 					}
 					JOptionPane.showMessageDialog(null, "Animal added");
+					zoo.manageZoo();
 					dispose();
 				}
 			}

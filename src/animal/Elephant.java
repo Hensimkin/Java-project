@@ -15,7 +15,7 @@ import food.*;
  */
 public class Elephant extends Chew
 {
-	private final static Point start=new Point(50,90);
+	private  Point start=new Point(50,90);
 	private final static IDiet diet=new Herbivore();
 	private double trunkLengh=1;
 	private ZooPanel1 z;
@@ -26,7 +26,7 @@ public class Elephant extends Chew
 	 */
 	public Elephant(String name)
 	{
-		super(name,start);
+		super(name,new Point(50,90));
 		MessageUtility.logConstractor("Elephant", name);
 		super.setWeight(500);
 		setTrunkLengh(trunkLengh);
@@ -36,7 +36,7 @@ public class Elephant extends Chew
 	
 	public Elephant(String name, int size, String col, int horSpeed, int verSpeed, ZooPanel1 z)
 	{
-		super(name,start,size,col,horSpeed,verSpeed,z);
+		super(name,new Point(50,90),size,col,horSpeed,verSpeed,z);
 		super.setWeight(500);
 		setTrunkLengh(trunkLengh);
 		super.setDiet(diet);

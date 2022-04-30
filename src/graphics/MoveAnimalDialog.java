@@ -31,7 +31,8 @@ public class MoveAnimalDialog extends JDialog implements ActionListener
 	 String f;
 	 String type2;
 	 int i2;
-	public MoveAnimalDialog()
+	 ZooPanel1 zoo;
+	public MoveAnimalDialog(ZooPanel1 zoo)
 	{
 		this.setLayout(new GridLayout(4,1));
 		this.setSize(400,150);
@@ -88,6 +89,7 @@ public class MoveAnimalDialog extends JDialog implements ActionListener
 		move=new JButton("Accept");
 		this.add(move);
 		move.addActionListener(this);
+		this.zoo=zoo;
 
 	}
 
@@ -138,6 +140,7 @@ public class MoveAnimalDialog extends JDialog implements ActionListener
 			{
 				((Turtle)ZooPanel1.array.get(i2)).dircheck(p);
 			}
+			zoo.manageZoo();
 			dispose();
 
 		}

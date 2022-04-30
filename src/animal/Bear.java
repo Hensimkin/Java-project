@@ -16,7 +16,7 @@ import utilities.MessageUtility;
  */
 public class Bear extends Roar
 {
-	private final static Point start=new Point(100,5);
+	private Point start=new Point(100,5);
 	private final static IDiet diet=new Omnivore();
 	String fur;
 	private ZooPanel1 z;
@@ -27,7 +27,7 @@ public class Bear extends Roar
 	 */
 	public Bear(String name)
 	{
-		super(name,start);
+		super(name,new Point(100,5));
 		MessageUtility.logConstractor("Bear", name);
 		super.setWeight(308.2);
 		setFurColor("GREY");
@@ -36,7 +36,7 @@ public class Bear extends Roar
 	
 	public Bear(String name, int size, String col, int horSpeed, int verSpeed, ZooPanel1 z)
 	{
-		super(name,start,size,col,horSpeed,verSpeed,z);
+		super(name,new Point(100,5),size,col,horSpeed,verSpeed,z);
 		super.setWeight(308.2);
 		setFurColor("GREY");
 		super.setDiet(diet);

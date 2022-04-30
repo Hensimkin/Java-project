@@ -23,7 +23,7 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	private String name;
 	private double weight;
 	private IDiet diet;
-	//private final int EAT_DISTANCE = 5;
+	private final int EAT_DISTANCE = 10;
 	private int size;
 	private String col;
 	private int horSpeed;
@@ -308,6 +308,11 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
         {
             System.out.println("Cannot load image");
         }
+	}
+
+	public int getEAT_DISTANCE()
+	{
+		return this.EAT_DISTANCE;
 	}
 
 }

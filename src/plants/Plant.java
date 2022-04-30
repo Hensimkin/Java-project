@@ -1,9 +1,17 @@
 package plants;
 import mobility.*;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
 import food.*;
+import mobility.Point;
 import utilities.MessageUtility;
 import graphics.*;
+
+import javax.imageio.ImageIO;
 
 /**
  * @author baroh
@@ -26,14 +34,25 @@ public abstract class Plant implements IEdible, Ilocatable,IDrawable {
 	/**
 	 * 
 	 */
-	public Plant() {
+	private ZooPanel1 zoo;
+	/**
+	 *
+	 */
+	private BufferedImage img = null;
+	/**
+	 *
+	 */
+	public Plant(ZooPanel1 zoo) {
 		Random rand = new Random();
-		int x = rand.nextInt(30);
-		int y = rand.nextInt(12);
+		//int x = rand.nextInt(30);
+		//int y = rand.nextInt(12);
+		int x=400;
+		int y=300;
 		this.location = new Point(x, y);
 		this.height = rand.nextInt(30);
 		this.weight = rand.nextInt(12);
 		MessageUtility.logConstractor("Plant", "Plant");
+		this.zoo=zoo;
 	}
 
 	/*
@@ -129,6 +148,31 @@ public abstract class Plant implements IEdible, Ilocatable,IDrawable {
 	@Override
 	public String toString() {
 		return "[" + this.getClass().getSimpleName() + "] ";
+	}
+
+
+	public void loadImages(String nm)
+	{
+		try
+		{
+			img = ImageIO.read(new File(PICTURE_PATH +"\\"+ nm));
+		}
+		catch (IOException e)
+		{
+			System.out.println("Cant load picture");
+		}
+	}
+
+	public ZooPanel1 getPan()
+	{
+		return this.zoo;
+	}
+
+
+	@Override
+	public void drawObject(Graphics g)
+	{
+		g.drawImage(img, 400, 300, 40, 40, zoo);
 	}
 
 }

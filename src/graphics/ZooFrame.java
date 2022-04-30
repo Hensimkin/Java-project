@@ -45,6 +45,7 @@ public class ZooFrame extends JFrame implements ActionListener
 	private JButton exit2;
 	private AddAnimalDialog a;
 	private ZooPanel1 m1;
+	private BufferedImage pic;
 
 	//private Object[][] data = new Object[10][6];
 
@@ -138,10 +139,10 @@ public class ZooFrame extends JFrame implements ActionListener
 		if (e.getSource()==image)
 		{
 
-			m1.setCheck(1);
-			m1.setImage();
-			//m1.setVisible(true);
-			//m1.repaint();
+			m1.setCheck(0);
+			m1.setT2(1);
+			m1.loadPic();
+			m1.repaint();
 			m1.setCheck(0);
           /*
 			try
@@ -243,7 +244,7 @@ public class ZooFrame extends JFrame implements ActionListener
 			}
 			else
 			{
-				MoveAnimalDialog m=new MoveAnimalDialog();
+				MoveAnimalDialog m=new MoveAnimalDialog(m1);
 				m1.manageZoo();
 			}
 		}
@@ -259,7 +260,30 @@ public class ZooFrame extends JFrame implements ActionListener
 			table=new JTable(ZooPanel1.data,ZooPanel1.col);
 			z=new Table(table);
 		}
+
+		if (e.getSource()==clear)
+		{
+			ZooPanel1.array.clear();
+			for(int i=0;i<AddAnimalDialog.i;i++)
+			{
+				ZooPanel1.data[i][0]=null;
+				ZooPanel1.data[i][1]=null;
+				ZooPanel1.data[i][2]=null;
+				ZooPanel1.data[i][3]=null;
+				ZooPanel1.data[i][4]=null;
+				ZooPanel1.data[i][5]=null;
+			}
+			AddAnimalDialog.i=0;
+			m1.repaint();
+		}
+
+		if (e.getSource()==food)
+		{
+			new Food(m1);
+		}
 	}
+
+
 	
 	public static void main(String[] args)
 	{

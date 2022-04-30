@@ -16,7 +16,7 @@ import utilities.MessageUtility;
  */
 public class Giraffe extends Chew
 {
-	private final static Point start=new Point(50,0);
+	private  Point start=new Point(50,0);
 	private final static IDiet diet=new Herbivore();
 	private double  neckLength=1.5;
 	private ZooPanel1 z;
@@ -28,7 +28,7 @@ public class Giraffe extends Chew
 	 */
 	public Giraffe(String name)
 	{
-		super(name,start);
+		super(name,new Point(50,0));
 		MessageUtility.logConstractor("Giraffe", name);
 		super.setWeight(450);
 		setNeckLength(neckLength);
@@ -37,7 +37,7 @@ public class Giraffe extends Chew
 	
 	public Giraffe(String name, int size, String col, int horSpeed, int verSpeed, ZooPanel1 z)
 	{
-		super(name,start,size,col,horSpeed,verSpeed,z);
+		super(name,new Point(50,0),size,col,horSpeed,verSpeed,z);
 		super.setWeight(450);
 		setNeckLength(neckLength);
 		super.setDiet(diet);
