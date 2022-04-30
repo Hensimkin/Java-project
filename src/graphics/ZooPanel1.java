@@ -105,6 +105,7 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 			{
 				for(int j=0;j<array.size();j++)
 				{
+					count=0;
 					if(array.get(i)==array.get(j))
 					{
 						continue;
@@ -189,11 +190,7 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		}
 		else if(this.check==1)
 		{
-
-			//Graphics2D gr = (Graphics2D) g;
-			//g.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 			Dimension size = this.getSize();
-			//this.setBackground(null);
 			g.drawImage(pic, 0, 0, size.width, size.height, this);
 		}
 		/*
@@ -209,7 +206,6 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	{
 		t2=0;
 		this.setBackground(null);
-		//this.paintComponent(this.getGraphics());
 		this.setBackground(Color.GREEN);
 	}
 

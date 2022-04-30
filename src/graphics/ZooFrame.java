@@ -144,46 +144,11 @@ public class ZooFrame extends JFrame implements ActionListener
 			m1.loadPic();
 			m1.repaint();
 			m1.setCheck(0);
-          /*
-			try
-			{
-				
-				this.getContentPane().setBackground(null);
-				pic2 = ImageIO.read(new File("C:\\Users\\hanig\\Desktop\\assignment2_pictures\\savanna.png"));
-				label.setBounds(0,0,800,600);
-				Image pic4 = pic2.getScaledInstance(800, 600, Image.SCALE_SMOOTH);
-				pic3 = new ImageIcon(pic4);
-				label.setIcon(pic3);
-				this.getContentPane().add(label);
-				
-				//this.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("savanna.png")))));
-		        
-		    }
-			catch(IOException ef)
-		    {
-				System.out.println("Cant load picture");
-		    }
 
-           */
-           // m1.setImage();
 		}
 		
 		if(e.getSource()==green)
 		{
-			//ZooPanel m2=new ZooPanel();
-			/*
-			m.setGreen();
-			m.repaint();
-			m.setVisible(true);
-			//frame.add(m2);
-			frame.setVisible(true);
-
-
-			this.remove(label);
-			this.getContentPane().setBackground(Color.green);
-
-			 */
-
 			m1.setGreen();
 		}
 		
