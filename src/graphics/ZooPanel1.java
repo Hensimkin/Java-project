@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import animal.*;
+import food.EFoodType;
+import food.IEdible;
 import meat.Meat;
 import plants.*;
 
@@ -94,6 +96,44 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		{
 			this.eatfood();
 
+		}
+
+		if(array.size()>1)
+		{
+			int count=0;
+			for(int i=0;i<array.size();i++)
+			{
+				for(int j=0;j<array.size();j++)
+				{
+					if(array.get(i)==array.get(j))
+					{
+						continue;
+					}
+					else
+					{
+						if(array.get(i).calcDistance(array.get(j).getLocation())<array.get(j).getSize())
+						{
+							count++;
+						}
+
+						if(array.get(i).getDiet().canEat(array.get(j).getFoodtype())==true)
+						{
+							count++;
+						}
+						if(array.get(i).getWeight()>2*(array.get(j).getWeight()))
+						{
+							count++;
+						}
+						if(count==3)
+						{
+							array.remove(j);
+							JOptionPane.showMessageDialog(null, "Animal has eat","success",JOptionPane.INFORMATION_MESSAGE);
+							break;
+						}
+						continue;
+					}
+				}
+			}
 		}
 
 	}
