@@ -144,7 +144,7 @@ public class Meat implements IEdible,IDrawable
     }
 
     public String getColor2() {
-        return null;
+        return "hi";
     }
 
 
