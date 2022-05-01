@@ -191,10 +191,10 @@ public class ZooFrame extends JFrame implements ActionListener
 
 		if(e.getSource()==addanimal)
 		{
-			if (AddAnimalDialog.i!=10)
+			if (m1.getI()!=10)
 			{
 				a=new AddAnimalDialog(m1,this);
-				m1.i++;
+				//m1.updatei(1);
 			}
 			else
 			{
@@ -229,7 +229,7 @@ public class ZooFrame extends JFrame implements ActionListener
 		if (e.getSource()==clear)
 		{
 			ZooPanel1.array.clear();
-			for(int i=0;i<AddAnimalDialog.i;i++)
+			for(int i=0;i<m1.getI();i++)
 			{
 				ZooPanel1.data[i][0]=null;
 				ZooPanel1.data[i][1]=null;
@@ -237,8 +237,9 @@ public class ZooFrame extends JFrame implements ActionListener
 				ZooPanel1.data[i][3]=null;
 				ZooPanel1.data[i][4]=null;
 				ZooPanel1.data[i][5]=null;
+
 			}
-			AddAnimalDialog.i=0;
+			m1.setI(0);
 			m1.repaint();
 		}
 

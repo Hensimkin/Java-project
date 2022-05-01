@@ -38,35 +38,30 @@ public class MoveAnimalDialog extends JDialog implements ActionListener
 		this.setSize(400,150);
 		this.setVisible(true);
 		this.setTitle("Move Animal");
-		String[]animals=new String[AddAnimalDialog.i];
+		String[]animals=new String[zoo.getI()];
 		Object ob;
-		for (int i=0;i<AddAnimalDialog.i;i++)
+		for (int i=0;i<zoo.getI();i++)
 		{
 			ob=ZooPanel1.array.get(i);
 			if(ob instanceof Lion)
 			{
-				animals[i]=ob.getClass().getSimpleName()+lionc;
-				lionc++;
+				animals[i]=((Lion) ob).getName();
 			}
 			if(ob instanceof Bear)
 			{
-				animals[i]=ob.getClass().getSimpleName()+bearc;
-				bearc++;
+				animals[i]=((Bear) ob).getName();
 			}
 			if(ob instanceof Elephant)
 			{
-				animals[i]=ob.getClass().getSimpleName()+elephantc;
-				elephantc++;
+				animals[i]=((Elephant) ob).getName();
 			}
 			if(ob instanceof Giraffe)
 			{
-				animals[i]=ob.getClass().getSimpleName()+giraffec;
-				giraffec++;
+				animals[i]=((Giraffe) ob).getName();
 			}
 			if(ob instanceof Turtle)
 			{
-				animals[i]=ob.getClass().getSimpleName()+turtlec;
-				turtlec++;
+				animals[i]=((Turtle) ob).getName();
 			}
 		}
 		JLabel labelAnimal=new JLabel("select animal");
@@ -107,7 +102,7 @@ public class MoveAnimalDialog extends JDialog implements ActionListener
 				y=Integer.parseInt(yFiled.getText());
 			}
 			type=(String)allAniaml.getSelectedItem();
-			for(int i=0;i<AddAnimalDialog.i;i++)
+			for(int i=0;i<zoo.getI();i++)
 			{
 				f=ZooPanel1.array.get(i).getName();
 				if(f.equals(type))
@@ -142,9 +137,6 @@ public class MoveAnimalDialog extends JDialog implements ActionListener
 			}
 			zoo.manageZoo();
 			dispose();
-
 		}
-		
 	}
-
 }

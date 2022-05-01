@@ -22,7 +22,7 @@ import plants.*;
  *
  */
 public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
-	int i = 0;
+	private int i = 0;
 	Plant plant=null;
 	Meat meat=null;
 	Animal ao = null;
@@ -39,7 +39,8 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	static ArrayList<Animal> array = new ArrayList<Animal>();
 	JTable table;
 	static String[] col = {"Animal", "Color", "weight", "Hor.Speed", "Ver.Speed", "Eat Counter"};
-	static Object[][] data = new Object[10][6];
+	static Object[][] data = new Object[11][6];
+
 	//private BufferedImage pic2=null;
 	private ImageIcon pic3;
 	private Image pic4;
@@ -71,6 +72,8 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		}
 		this.setBackground(null);
 		this.setVisible(true);
+		data[10][0]="Total";
+		data[10][5]=0;
 	}
 
 
@@ -127,11 +130,20 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 						}
 						if(count==3)
 						{
-							array.remove(j);
+							deleteData(array.get(j).getName());
 							JOptionPane.showMessageDialog(null, "Animal has eat","success",JOptionPane.INFORMATION_MESSAGE);
+							array.get(i).eatInc();
+							setFoodInc(array.get(i).getName(),array.get(i));
+							array.get(i).setWeight(array.get(i).getWeight()*1.1);
+							setWeighInc(array.get(i).getName(),array.get(i));
+							this.i--;
+							array.remove(j);
 							break;
 						}
-						continue;
+					}
+					if(count==3)
+					{
+						break;
 					}
 				}
 			}
@@ -305,6 +317,23 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		this.t2=num;
 	}
 
+	public void updatei(int num)
+	{
+		if(num==1)
+		{
+			this.i++;
+		}
+		else
+		{
+			this.i--;
+		}
+	}
+
+	public int getI()
+	{
+		return this.i;
+	}
+
 
 	public void eatfood()
 	{
@@ -322,6 +351,10 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 						this.plant=null;
 						this.repaint();
 						JOptionPane.showMessageDialog(null, "Animal has eat","success",JOptionPane.INFORMATION_MESSAGE);
+						ok.setWeight(ok.getWeight()*1.07);
+						setWeighInc(ok.getName(),ok);
+						ok.eatInc();
+						setFoodInc(ok.getName(),ok);
 						break;
 					}
 				}
@@ -334,10 +367,14 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 					double distance=ok.calcDistance(meat.getLocation());
 					if (distance<=ok.getEAT_DISTANCE())
 					{
-						ok.eatInc();
+						//ok.eatInc();
 						this.meat=null;
 						this.repaint();
 						JOptionPane.showMessageDialog(null, "Animal has eat","success",JOptionPane.INFORMATION_MESSAGE);
+						ok.setWeight(ok.getWeight()*1.1);
+						setWeighInc(ok.getName(),ok);
+						ok.eatInc();
+						setFoodInc(ok.getName(),ok);
 						break;
 					}
 				}
@@ -349,10 +386,14 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 					double distance=ok.calcDistance(plant.getLocation());
 					if (distance<=ok.getEAT_DISTANCE())
 					{
-						ok.eatInc();
+						//ok.eatInc();
 						this.plant=null;
 						this.repaint();
 						JOptionPane.showMessageDialog(null, "Animal has eat","success",JOptionPane.INFORMATION_MESSAGE);
+						ok.setWeight(ok.getWeight()*1.07);
+						setWeighInc(ok.getName(),ok);
+						ok.eatInc();
+						setFoodInc(ok.getName(),ok);
 						break;
 					}
 				}
@@ -361,10 +402,14 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 					double distance=ok.calcDistance(meat.getLocation());
 					if (distance<=ok.getEAT_DISTANCE())
 					{
-						ok.eatInc();
+						//ok.eatInc();
 						this.meat=null;
 						this.repaint();
 						JOptionPane.showMessageDialog(null, "Animal has eat","success",JOptionPane.INFORMATION_MESSAGE);
+						ok.setWeight(ok.getWeight()*1.1);
+						setWeighInc(ok.getName(),ok);
+						ok.eatInc();
+						setFoodInc(ok.getName(),ok);
 						break;
 					}
 				}
@@ -376,10 +421,14 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 					double distance=ok.calcDistance(plant.getLocation());
 					if (distance<=ok.getEAT_DISTANCE())
 					{
-						ok.eatInc();
+						//ok.eatInc();
 						this.plant=null;
 						this.repaint();
 						JOptionPane.showMessageDialog(null, "Animal has eat","success",JOptionPane.INFORMATION_MESSAGE);
+						ok.setWeight(ok.getWeight()*1.07);
+						setWeighInc(ok.getName(),ok);
+						ok.eatInc();
+						setFoodInc(ok.getName(),ok);
 						break;
 					}
 				}
@@ -391,10 +440,14 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 					double distance=ok.calcDistance(plant.getLocation());
 					if (distance<=ok.getEAT_DISTANCE())
 					{
-						ok.eatInc();
+						//ok.eatInc();
 						this.plant=null;
 						this.repaint();
 						JOptionPane.showMessageDialog(null, "Animal has eat","success",JOptionPane.INFORMATION_MESSAGE);
+						ok.setWeight(ok.getWeight()*1.07);
+						setWeighInc(ok.getName(),ok);
+						ok.eatInc();
+						setFoodInc(ok.getName(),ok);
 						break;
 					}
 				}
@@ -402,5 +455,68 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		}
 	}
 
+	public void setFoodInc(String name,Animal ao)
+	{
+		for(int i=0;i<this.i;i++)
+		{
+			if(data[i][0]==name)
+			{
+				data[i][5]=ao.getEatCount();
+			}
+		}
+	}
+
+
+	public void setWeighInc(String name,Animal ao)
+	{
+		for(int i=0;i<this.i;i++)
+		{
+			if(data[i][0]==name)
+			{
+				data[i][2]=ao.getWeight();
+			}
+		}
+	}
+
+	public void deleteData(String name)
+	{
+		int counter=0;
+		Object[][] data2 = new Object[11][6];
+		for(int i=0;i<this.i;i++)
+		{
+			if(name!=data[i][0])
+			{
+				for(int j=0;j<6;j++)
+				{
+					{
+						data2[i][j]=data[i][j];
+					}
+				}
+			}
+			else
+			{
+				i++;
+			}
+		}
+		data2[10][0]="Total";
+		for(int i=0;i<this.i;i++)
+		{
+			if(name!=data[i][0])
+			{
+				counter=counter+(int)data[i][5];
+			}
+			else
+			{
+				i++;
+			}
+		}
+		data2[10][5]=counter;
+		data=data2;
+	}
+
+    public void setI(int num)
+	{
+		this.i=num;
+	}
 
 }
