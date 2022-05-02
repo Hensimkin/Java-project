@@ -15,7 +15,7 @@ import java.io.IOException;
 import java.util.Random;
 
 /**
- * The class that take care of add meat option
+ * The class that take care of add meat option.
  * @author Adir Melker 316614569 and Hen Simkin 208514109
  *
  */
