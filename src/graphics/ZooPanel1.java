@@ -23,7 +23,7 @@ import plants.*;
  */
 public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	private int i = 0;
-	Plant plant=null;
+	private Plant plant=null;
 	Meat meat=null;
 	Animal ao = null;
 	//AddAnimalDialog a;
@@ -58,12 +58,10 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	 */
 	public ZooPanel1()
 	{
-		//this.setLayout(new BorderLayout());
 		try
 		{
 			pic = ImageIO.read(new File(BACKGROUND_PATH+"//"+"savanna.png"));
 
-			//this.repaint();
 		}
 
 		catch (IOException e)
@@ -155,14 +153,6 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 
 	public boolean isChange()
 	{
-		/*
-		if (array.get(0).getChanges() == true) {
-			array.get(0).setChanges(false);
-			return true;
-		}
-
-		 */
-
 
 		for (int counter = 0; counter < array.size(); counter++) {
 			if (array.get(counter).getChanges() == true) {
@@ -207,12 +197,6 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 			Dimension size = this.getSize();
 			g.drawImage(pic, 0, 0, size.width, size.height, this);
 		}
-		/*
-		else
-		{
-
-		}
-         */
 	}
 
 
