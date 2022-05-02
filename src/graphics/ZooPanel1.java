@@ -31,7 +31,7 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	Table z;
 	Color c = null;
 	private int check=0;
-	private static final String BACKGROUND_PATH = "C:\\Users\\hanig\\Desktop\\assignment2_pictures";
+	private static final String BACKGROUND_PATH = "C:\\Users\\Adir\\Desktop\\עבודה 2\\assignment2_pictures";
 	private BufferedImage pic = null;
 	private BufferedImage pic22 = null;
 	//static Animal[] array=new Animal[10];

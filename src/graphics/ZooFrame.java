@@ -23,7 +23,7 @@ import zoo.*;
  */
 public class ZooFrame extends JFrame implements ActionListener
 {
-	private static final String BACKGROUND_PATH="C:\\Users\\hanig\\Desktop\\assignment2_pictures";
+	private static final String BACKGROUND_PATH="C:\\Users\\Adir\\Desktop\\עבודה 2\\assignment2_pictures";
 	//static JFrame frame;
 	static JLabel label;
 	static BufferedImage pic2=null;

@@ -136,11 +136,5 @@ public class Lion extends Roar
 			super.setX_dir(-1);
 		}
 	}
-	
-
-
-
-
-	
 
 }
