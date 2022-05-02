@@ -133,6 +133,26 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 						if(count==3)
 						{
 							String name1=array.get(j).getName();
+							if(array.get(j) instanceof Lion)
+							{
+								AddAnimalDialog.lionc--;
+							}
+							if(array.get(j) instanceof Bear)
+							{
+								AddAnimalDialog.bearc--;
+							}
+							if(array.get(j) instanceof Elephant)
+							{
+								AddAnimalDialog.elephantc--;
+							}
+							if(array.get(j) instanceof Giraffe)
+							{
+								AddAnimalDialog.giraffec--;
+							}
+							if(array.get(j) instanceof Turtle)
+							{
+								AddAnimalDialog.turtlec--;
+							}
 							JOptionPane.showMessageDialog(null, "Animal has eat","success",JOptionPane.INFORMATION_MESSAGE);
 							array.get(i).eatInc();
 							setFoodInc(array.get(i).getName(),array.get(i));

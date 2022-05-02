@@ -217,6 +217,29 @@ public class ZooFrame extends JFrame implements ActionListener
 
 		if (e.getSource()==clear)
 		{
+			for(int i=0;i<ZooPanel1.array.size();i++)
+			{
+				if(ZooPanel1.array.get(i) instanceof Lion)
+				{
+					AddAnimalDialog.lionc--;
+				}
+				if(ZooPanel1.array.get(i) instanceof Bear)
+				{
+					AddAnimalDialog.bearc--;
+				}
+				if(ZooPanel1.array.get(i) instanceof Elephant)
+				{
+					AddAnimalDialog.elephantc--;
+				}
+				if(ZooPanel1.array.get(i) instanceof Giraffe)
+				{
+					AddAnimalDialog.giraffec--;
+				}
+				if(ZooPanel1.array.get(i) instanceof Turtle)
+				{
+					AddAnimalDialog.turtlec--;
+				}
+			}
 			ZooPanel1.array.clear();
 			for(int i=0;i<m1.getI();i++)
 			{
