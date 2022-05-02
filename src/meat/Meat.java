@@ -55,19 +55,28 @@ public class Meat implements IEdible,IDrawable
         this.zoo=zoo;
     }
 
-
+    /**
+     * return the type of food
+     * @return meat
+     */
     public EFoodType getFoodtype() {
         MessageUtility.logGetter(this.getClass().getSimpleName(), "getFoodType", EFoodType.MEAT);
         return EFoodType.MEAT;
     }
 
-
+    /**
+     *
+     * @return the Height of animal that eat meat
+     */
     public double getHeight() {
         MessageUtility.logGetter(this.getClass().getSimpleName(), "getHeight", this.height);
         return this.height;
     }
 
-
+    /**
+     *
+     * @return the location of animal that eat meat
+     */
     public Point getLocation() {
         MessageUtility.logGetter(this.getClass().getSimpleName(), "getLocation", this.location);
         return this.location;
@@ -76,13 +85,20 @@ public class Meat implements IEdible,IDrawable
 
 
 
-
+    /**
+     *
+     * @return the weight of animal that eat meat
+     */
     public double getWeight() {
         MessageUtility.logGetter(this.getClass().getSimpleName(), "getWeight", this.weight);
         return weight;
     }
 
-
+    /**
+     *  change the height of animal that eat meat
+     *  @parm height the height of the animal
+     * @return true if the height is positive
+     */
     public boolean setHeight(double height) {
 
         boolean isSuccess = (height >= 0);
@@ -100,7 +116,11 @@ public class Meat implements IEdible,IDrawable
      *
      * @see mobility.ILocatable#setLocation(mobility.Point)
      */
-
+    /**
+     * change the location of animal that eat meat
+     *  @parm point the location
+     * @return true if the location is in the boundaries
+     */
     public boolean setLocation(Point newLocation) {
         boolean isSuccess = Point.cheackBounderies(newLocation);
         if (isSuccess) {
@@ -111,6 +131,11 @@ public class Meat implements IEdible,IDrawable
     }
 
 
+    /**
+     *  change the location of animal that eat meat
+     *  @parm weight the weight of the animal
+     * @return true if the location is in the boundaries
+     */
     public boolean setWeight(double weight) {
         boolean isSuccess = (weight >= 0);
         if (isSuccess) {
@@ -125,6 +150,11 @@ public class Meat implements IEdible,IDrawable
 
 
     @Override
+    /**
+     * load image to the frame
+     * @param nm
+     * 		the path to the image
+     */
     public void loadImages(String nm)
     {
         try
@@ -138,6 +168,10 @@ public class Meat implements IEdible,IDrawable
     }
 
     @Override
+    /**
+     * draw meat image to the frame
+     *
+     */
     public void drawObject(Graphics g)
     {
         g.drawImage(img, 400, 300, 40, 40, zoo);

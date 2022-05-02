@@ -81,6 +81,10 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 
 	}
 
+	/**
+	 * function that responsible on the zoo, add animal,eat food,change weight.
+	 *
+	 */
 	public void manageZoo()
 	{
 		if (isChange()==true)
@@ -151,6 +155,10 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 
 	}
 
+	/**
+	 * check if there was change in the array
+	 * @return true if there was change and false if dosent.
+	 */
 	public boolean isChange()
 	{
 
@@ -163,7 +171,10 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		return false;
 	}
 
-
+	/**
+	 * function that responsible on the paint and picture adding
+	 * @param g the <code>Graphics</code> object to protect
+	 */
 	@Override
 	public void paintComponent(Graphics g)
 	{
@@ -199,7 +210,9 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		}
 	}
 
-
+	/**
+	 * set background to green
+	 */
 	public void setGreen()
 	{
 		t2=0;
@@ -207,6 +220,9 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		this.setBackground(Color.GREEN);
 	}
 
+	/**
+	 * set background to default
+	 */
 	public void setNone()
 	{
 		t2=0;
@@ -219,7 +235,10 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		 this.check=num;
 	 }
 
-
+	/**
+	 * function that responsible adding food to the screen
+	 * @param num the num of the food
+	 */
 	public void setFood(int num)
 	{
 		if(num==1)
@@ -256,7 +275,9 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		}
 	}
 
-
+	/**
+	 * load savanna picture to the screen
+	 */
 	public void loadPic()
 	{
 		try
@@ -269,6 +290,10 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		}
 	}
 
+	/**
+	 * function that responsible set savanna background.
+	 * @param g
+	 */
 	public void drawObject (Graphics g)
 	{
 		this.setBackground(null);
@@ -281,6 +306,10 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		this.t2=num;
 	}
 
+	/**
+	 * update how many animals in the zoo
+	 * @param num if 1 inc size by one
+	 */
 	public void updatei(int num)
 	{
 		if(num==1)
@@ -293,12 +322,18 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		}
 	}
 
+	/**
+	 *
+	 * @return how many animals in the zoo
+	 */
 	public int getI()
 	{
 		return this.i;
 	}
 
-
+	/**
+	 * function that responsible for eating food by different animals also update their weight after this.
+	 * */
 	public void eatfood()
 	{
 		int eatcount=1;
@@ -419,6 +454,11 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		}
 	}
 
+	/**
+	 * update how much animal eat and update the overall eating counter
+	 * @param name the name of the animal
+	 * @param ao the animal
+	 */
 	public void setFoodInc(String name,Animal ao)
 	{
 		int counter=0;
@@ -433,7 +473,11 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		data[10][5]=counter;
 	}
 
-
+	/**
+	 * increase the weight of the animal
+	 * @param name the name of the animal
+	 * @param ao the animal
+	 */
 	public void setWeighInc(String name,Animal ao)
 	{
 		for(int i=0;i<this.i;i++)
@@ -445,6 +489,10 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		}
 	}
 
+	/**
+	 * delete animal from the zoo
+	 * @param name the name of the animal we want to remove
+	 */
 	public void deleteData(String name)
 	{
 		int counter=0;
