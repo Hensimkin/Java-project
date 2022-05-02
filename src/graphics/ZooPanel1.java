@@ -31,7 +31,7 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	Table z;
 	Color c = null;
 	private int check=0;
-	private static final String BACKGROUND_PATH = "C:\\Users\\Adir\\Desktop\\עבודה 2\\assignment2_pictures";
+	private static final String BACKGROUND_PATH = "C:\\Users\\hanig\\Desktop\\assignment2_pictures";
 	private BufferedImage pic = null;
 	private BufferedImage pic22 = null;
 	//static Animal[] array=new Animal[10];
@@ -130,7 +130,7 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 						}
 						if(count==3)
 						{
-							deleteData(array.get(j).getName());
+							String name1=array.get(j).getName();
 							JOptionPane.showMessageDialog(null, "Animal has eat","success",JOptionPane.INFORMATION_MESSAGE);
 							array.get(i).eatInc();
 							setFoodInc(array.get(i).getName(),array.get(i));
@@ -138,6 +138,8 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 							setWeighInc(array.get(i).getName(),array.get(i));
 							this.i--;
 							array.remove(j);
+							this.repaint();
+							deleteData(name1);
 							break;
 						}
 					}
@@ -180,23 +182,23 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		{
 			if(t2==1)
 			{
-				this.drawObject(g);
+				this.drawObject(g);//zoopanel
 			}
 			if (array.size()!=0)
 			{
 				for (int i = 0; i < array.size(); i++)
 				{
-					array.get(i).drawObject(g);
+					array.get(i).drawObject(g);//animal
 				}
 			}
 			if(plant!=null)
 			{
-				plant.drawObject(g);
+				plant.drawObject(g);//plant
 				check=0;
 			}
 			if(meat!=null)
 			{
-				meat.drawObject(g);
+				meat.drawObject(g);//meat
 				check=0;
 			}
 		}
@@ -226,28 +228,13 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		t2=0;
 		this.setBackground(null);
 	}
-/*
-     public void setImage()
-	 {
-		 //this.setBackground(null);
-		 int t2=1;
-		 this.paintComponent(this.getGraphics());
-	 }
 
- */
 
 	 public void setCheck(int num)
 	 {
 		 this.check=num;
 	 }
-/*
-	public void setPic()
-	{
-		setBackground(null);
-		this.paintComponent2(this.getGraphics());
-	}
 
- */
 
 	public void setFood(int num)
 	{
@@ -258,6 +245,7 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		   this.plant.loadImages("cabbage.png");
 		  // this.setCheck(2);
 		   this.repaint();
+		   this.manageZoo();
 		   this.setCheck(0);
 
 		}
@@ -268,6 +256,7 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 			this.plant.loadImages("lettuce.png");
 			// this.setCheck(2);
 			this.repaint();
+			this.manageZoo();
 			this.setCheck(0);
 		}
 
@@ -278,19 +267,10 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 			this.meat.loadImages("meat.gif");
 			// this.setCheck(2);
 			this.repaint();
+			this.manageZoo();
 			this.setCheck(0);
 		}
 	}
-
-	/*
-	public void Image(Graphics g)
-	{
-		Dimension size = this.getSize();
-		g.drawImage(pic, 0, 0, size.width, size.height, this);
-	}
-
-	 */
-
 
 
 	public void loadPic()
@@ -457,6 +437,7 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 
 	public void setFoodInc(String name,Animal ao)
 	{
+		int counter=0;
 		for(int i=0;i<this.i;i++)
 		{
 			if(data[i][0]==name)
@@ -464,6 +445,8 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 				data[i][5]=ao.getEatCount();
 			}
 		}
+		counter=(int)data[10][5]+1;
+		data[10][5]=counter;
 	}
 
 
@@ -482,33 +465,27 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	{
 		int counter=0;
 		Object[][] data2 = new Object[11][6];
-		for(int i=0;i<this.i;i++)
+		for(int i=0,k=0;i<this.i+1;i++)
 		{
 			if(name!=data[i][0])
 			{
 				for(int j=0;j<6;j++)
 				{
 					{
-						data2[i][j]=data[i][j];
+						data2[k][j]=data[i][j];
 					}
 				}
-			}
-			else
-			{
-				i++;
+				k++;
 			}
 		}
 		data2[10][0]="Total";
-		for(int i=0;i<this.i;i++)
+		for(int i=0;i<this.i+1;i++)
 		{
 			if(name!=data[i][0])
 			{
 				counter=counter+(int)data[i][5];
 			}
-			else
-			{
-				i++;
-			}
+
 		}
 		data2[10][5]=counter;
 		data=data2;

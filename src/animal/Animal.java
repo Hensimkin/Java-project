@@ -285,23 +285,23 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 			{
 				this.img1 = ImageIO.read(new File(IDrawable.PICTURE_PATH+"\\"+nm+"_b_1.png"));
 				this.img2 = ImageIO.read(new File(IDrawable.PICTURE_PATH+"\\"+nm+"_b_2.png"));
-				System.out.println("Anial drawed");
+				System.out.println("Animal drawed");
 			}
 			else if(this.col=="Red")
 			{
 				this.img1 = ImageIO.read(new File(IDrawable.PICTURE_PATH+"\\"+nm+"_r_1.png"));
 				this.img2 = ImageIO.read(new File(IDrawable.PICTURE_PATH+"\\"+nm+"_r_2.png"));
-				System.out.println("Anial drawed");
+				System.out.println("Animal drawed");
 			}
 			else if(this.col=="Natural")
 			{
 				this.img1 = ImageIO.read(new File(IDrawable.PICTURE_PATH+"\\"+nm+"_n_1.png"));
 				this.img2 = ImageIO.read(new File(IDrawable.PICTURE_PATH+"\\"+nm+"_n_2.png"));
-				System.out.println("Anial drawed");
+				System.out.println("Animal drawed");
 			}
 			else
 			{
-				System.out.println("Anial not drawed");
+				System.out.println("Animal not drawed");
 			}
         }
         catch (IOException e)

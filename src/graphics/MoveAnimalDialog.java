@@ -135,6 +135,7 @@ public class MoveAnimalDialog extends JDialog implements ActionListener
 			{
 				((Turtle)ZooPanel1.array.get(i2)).dircheck(p);
 			}
+			zoo.repaint();
 			zoo.manageZoo();
 			dispose();
 		}

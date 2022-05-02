@@ -23,7 +23,7 @@ import zoo.*;
  */
 public class ZooFrame extends JFrame implements ActionListener
 {
-	private static final String BACKGROUND_PATH="C:\\Users\\Adir\\Desktop\\עבודה 2\\assignment2_pictures";
+	private static final String BACKGROUND_PATH="C:\\Users\\hanig\\Desktop\\assignment2_pictures";
 	//static JFrame frame;
 	static JLabel label;
 	static BufferedImage pic2=null;
@@ -65,12 +65,6 @@ public class ZooFrame extends JFrame implements ActionListener
 		this.setLayout(new BorderLayout());
 		JPanel downb=new JPanel();
 		downb.setLayout(new FlowLayout());
-
-		//this.pack();
-		//this.setVisible(true);
-		//this.setSize(800,600);
-
-
 		label=new JLabel();
 		JMenuBar menuBar=new JMenuBar();
 		this.setJMenuBar(menuBar);
@@ -95,8 +89,6 @@ public class ZooFrame extends JFrame implements ActionListener
 		help2=new JMenuItem("Help");
 		help.add(help2);
 		help2.addActionListener(this);
-
-        //this.add(m1);
 		addanimal=new JButton("Add Animal");
 		downb.add(this.addanimal);
 		this.addanimal.addActionListener(this);
@@ -117,11 +109,8 @@ public class ZooFrame extends JFrame implements ActionListener
 		this.food.addActionListener(this);
 		this.add(downb,BorderLayout.SOUTH);
 		downb.setBackground(Color.blue);
-
-
 		this.add(downb, BorderLayout.SOUTH);
 		this.add(m1);
-		//m1.setVisible(true);
 		this.setVisible(true);
 		this.pack();
 		this.setSize(800,600);
@@ -239,6 +228,7 @@ public class ZooFrame extends JFrame implements ActionListener
 				ZooPanel1.data[i][5]=null;
 
 			}
+			ZooPanel1.data[10][5]=0;
 			m1.setI(0);
 			m1.repaint();
 		}
