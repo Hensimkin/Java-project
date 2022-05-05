@@ -18,7 +18,7 @@ import graphics.*;
  * @author Hen simkin 
  * @author Adir melker
  */
-public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAnimalBehavior//,Runnable
+public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAnimalBehavior,Runnable
 {
 	private String name;
 	private double weight;
@@ -37,9 +37,30 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	private BufferedImage img1=null, img2=null;
 	protected Thread thread;
 	protected boolean threadSuspended;
-	
-	
-	
+
+
+
+	public void run()
+	{
+
+	}
+
+	/**
+	 * the animal get suspended
+	 */
+	public void setSuspended()
+	{
+
+	}
+
+	/**
+	 * the animal get resumed
+	 */
+	public void setResumed()
+	{
+
+	}
+
 	/**
 	 * constractor that get name and point
 	 * @param name
@@ -47,6 +68,7 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	 * @param point
 	 * 			starting point of the animal
 	 */
+
 	public Animal(String name,Point point)
 	{
 		super(point);
