@@ -46,6 +46,8 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	private Image pic4;
 	//private JLabel label=new JLabel();
 	private int t2=0;
+	private Thread controller;
+
 
 
 	@Override

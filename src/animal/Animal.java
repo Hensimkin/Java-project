@@ -18,7 +18,7 @@ import graphics.*;
  * @author Hen simkin 
  * @author Adir melker
  */
-public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAnimalBehavior
+public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAnimalBehavior//,Runnable
 {
 	private String name;
 	private double weight;
@@ -35,6 +35,8 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	private int eatCount=0;
 	private ZooPanel1 pan;
 	private BufferedImage img1=null, img2=null;
+	protected Thread thread;
+	protected boolean threadSuspended;
 	
 	
 	

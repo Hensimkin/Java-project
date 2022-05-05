@@ -9,4 +9,7 @@ public interface IAnimalBehavior {
 	public int getEatCount();
 	public boolean getChanges();
 	public void setChanges(boolean state);
+
+	//public void setSuspended();
+	//public void setResumed();
 }

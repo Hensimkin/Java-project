@@ -47,6 +47,10 @@ public class ZooFrame extends JFrame implements ActionListener
 	private ZooPanel1 m1;
 	private BufferedImage pic;
 
+	private JButton sleep;
+	private JButton wakeUp;
+
+
 	//private Object[][] data = new Object[10][6];
 
 	//private String[] col = {"Animal", "Color", "weight", "Hor.Speed", "Ver.Speed", "Eat Counter"};
@@ -92,21 +96,27 @@ public class ZooFrame extends JFrame implements ActionListener
 		addanimal=new JButton("Add Animal");
 		downb.add(this.addanimal);
 		this.addanimal.addActionListener(this);
-		moveanimal=new JButton("Move Animal");
-		downb.add(this.moveanimal);
-		this.moveanimal.addActionListener(this);
-		info=new JButton("Info");
-		downb.add(this.info);
-		this.info.addActionListener(this);
-		exit2=new JButton("Exit");
-		downb.add(this.exit2);
-		this.exit2.addActionListener(this);
+		sleep=new JButton("Sleep");
+		downb.add(this.sleep);
+		this.sleep.addActionListener(this);
+		//moveanimal=new JButton("Move Animal");
+		//downb.add(this.moveanimal);
+		//this.moveanimal.addActionListener(this);
+		wakeUp=new JButton("Wake up");
+		downb.add(this.wakeUp);
+		this.wakeUp.addActionListener(this);
 		clear=new JButton("Clear");
 		downb.add(this.clear);
 		this.clear.addActionListener(this);
 		food=new JButton("Food");
 		downb.add(this.food);
 		this.food.addActionListener(this);
+		info=new JButton("Info");
+		downb.add(this.info);
+		this.info.addActionListener(this);
+		exit2=new JButton("Exit");
+		downb.add(this.exit2);
+		this.exit2.addActionListener(this);
 		this.add(downb,BorderLayout.SOUTH);
 		downb.setBackground(Color.blue);
 		this.add(downb, BorderLayout.SOUTH);
@@ -189,7 +199,18 @@ public class ZooFrame extends JFrame implements ActionListener
 			{
 				JOptionPane.showMessageDialog(null, "Can't add more animals","Error",JOptionPane.WARNING_MESSAGE);
 			}
+
 		}
+		if (e.getSource()==sleep)
+		{
+
+		}
+
+		if (e.getSource()==wakeUp)
+		{
+
+		}
+		/*
 		if(e.getSource()==moveanimal)
 		{
 			if (ZooPanel1.array.isEmpty())
@@ -201,8 +222,10 @@ public class ZooFrame extends JFrame implements ActionListener
 				MoveAnimalDialog m=new MoveAnimalDialog(m1);
 				m1.manageZoo();
 			}
-		}
 
+
+		}
+		*/
 		if(e.getSource()==exit2)
 		{
 			System.exit(0);
