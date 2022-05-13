@@ -177,6 +177,7 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 						object=new Lion(name,(int)size,c,num1,num2,zoo);
 						object.setWeight((int) (size*0.8));
 						ZooPanel1.array.add(object);
+						object.getThread().start();
 						//ZooPanel1.array.get(0).getPanel().manageZoo();
 						ZooPanel1.data[zoo.getI()][0]=name;
 						ZooPanel1.data[zoo.getI()][1]=c;
@@ -194,6 +195,7 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 						size=(int) (size*1.5);
 						object=new Bear(name,(int)size,c,num1,num2,zoo);
 						ZooPanel1.array.add(object);
+						object.getThread().start();
 						object.setWeight((int) (size*1.5));
 						//ZooPanel1.array.get(0).getPanel().manageZoo();
 						ZooPanel1.data[zoo.getI()][0]=name;
@@ -213,6 +215,7 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 						object=new Elephant(name,(int)size,c,num1,num2,zoo);
 						object.setWeight((int) (size*10));
 						ZooPanel1.array.add(object);
+						object.getThread().start();
 						//ZooPanel1.array.get(0).getPanel().manageZoo();
 						ZooPanel1.data[zoo.getI()][0]=name;
 						ZooPanel1.data[zoo.getI()][1]=c;
@@ -231,6 +234,7 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 						object=new Giraffe(name,(int)size,c,num1,num2,zoo);
 						object.setWeight((int) (size*2.2));
 						ZooPanel1.array.add(object);
+						object.getThread().start();
 						//ZooPanel1.array.get(0).getPanel().manageZoo();
 						ZooPanel1.data[zoo.getI()][0]=name;
 						ZooPanel1.data[zoo.getI()][1]=c;
@@ -249,6 +253,7 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 						object=new Turtle(name,(int)size,c,num1,num2,zoo);
 						object.setWeight((int) (size*0.5));
 						ZooPanel1.array.add(object);
+						object.getThread().start();
 						//ZooPanel1.array.get(0).getPanel().manageZoo();
 						ZooPanel1.data[zoo.getI()][0]=name;
 						ZooPanel1.data[zoo.getI()][1]=c;

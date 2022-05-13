@@ -48,12 +48,22 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	private int t2=0;
 	private Thread controller;
 
+	private boolean flag=true;
+
 
 
 	@Override
-	public void run() {
-
-
+	public void run()
+	{
+		while(flag)
+		{
+			manageZoo();
+			try {
+				this.controller.sleep(50);
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
+		}
 	}
 
 	/**
@@ -75,13 +85,13 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		this.setVisible(true);
 		data[10][0]="Total";
 		data[10][5]=0;
+		this.controller=new Thread(this);
 	}
 
 
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-
 	}
 
 	/**
@@ -550,5 +560,27 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	{
 		this.i=num;
 	}
+
+
+	public Thread getThread()
+	{
+		return this.controller;
+	}
+	 public void sleepAll() throws InterruptedException {
+		 for(int i=0;i<this.i;i++)
+		 {
+			 array.get(i).setThreadSuspended(true);
+		 }
+	 }
+	public void wakeAll()
+	{
+		for(int i=0;i<this.i;i++)
+		{
+
+			array.get(i).setThreadSuspended(false);
+			array.get(i).setResumed();
+		}
+	}
+
 
 }

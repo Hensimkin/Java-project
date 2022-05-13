@@ -36,21 +36,91 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	private ZooPanel1 pan;
 	private BufferedImage img1=null, img2=null;
 	protected Thread thread;
-	protected boolean threadSuspended;
+	protected boolean threadSuspended=false;
+	private boolean flag=true;
+	private int c=0;
 
 
 
 	public void run()
 	{
+		while(flag)
+		{
+			while(this.threadSuspended)
+			{
+				System.out.println("action resumed2");
+				try
+				{
+					c=1;
+					setSuspended();
+				} catch (InterruptedException e) {
+					throw new RuntimeException(e);
+				}
+			}
+			int newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
+			int newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
+			if(newx>800)
+			{
+				this.x_dir=-1;
+				newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
+			}
+			if(newx<0)
+			{
+				this.x_dir=1;
+				newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
+			}
+			if(newy>600)
+			{
+				this.y_dir=-1;
+				newy=super.getLocation().getY() + this.horSpeed * this.y_dir;
+			}
+			if(newy<0)
+			{
+				this.y_dir=1;
+				newy=super.getLocation().getY() + this.horSpeed * this.y_dir;
+			}
+			super.setLocation(new Point(newx,newy));
+			try
+			{
+				this.thread.sleep(50);
+			} catch (InterruptedException e)
+			{
+				throw new RuntimeException(e);
+			}
+			this.pan.repaint();
+		}
+		/*
+		if(this.threadSuspended)
+		{
+			System.out.println("action resumed2");
+			try
+			{
+				setSuspended();
+			} catch (InterruptedException e) {
+				throw new RuntimeException(e);
+			}
+		}
 
+
+		if(!this.threadSuspended)
+		{
+			System.out.println("action resumed2");
+			setResumed();
+		}
+		*/
 	}
 
 	/**
 	 * the animal get suspended
 	 */
-	public void setSuspended()
+	public void setSuspended() throws InterruptedException
 	{
 
+		synchronized(this)
+		{
+			this.wait();
+			System.out.println("action resumed");
+		}
 	}
 
 	/**
@@ -58,7 +128,11 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	 */
 	public void setResumed()
 	{
-
+		synchronized(this)
+		{
+			System.out.println("animal suspended45");
+			this.notifyAll();
+		}
 	}
 
 	/**
@@ -74,6 +148,7 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 		super(point);
 		MessageUtility.logConstractor("Animal", name);
 		setName(name);
+		//this.thread=new Thread(this);
 	}
 	
 	public Animal(String name,Point point,int size,String col,int horSpeed,int verSpeed,ZooPanel1 z)
@@ -85,6 +160,7 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 		this.verSpeed=verSpeed;
 		this.name=name;
 		this.pan=z;
+		this.thread=new Thread(this);
 	}
 	
 	
@@ -102,6 +178,7 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	 */
 	public boolean setWeight(double weight)
 	{
+
 		this.weight=weight;
 		MessageUtility.logSetter(this.name, "setWeight", this.weight, true);
 		return true;
@@ -338,5 +415,33 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	{
 		return this.EAT_DISTANCE;
 	}
+
+	public Thread getThread()
+	{
+		return this.thread;
+	}
+
+
+	public void setThreadSuspended(boolean flag)
+	{
+		if(flag==true)
+		{
+			//this.flag=false;
+			this.threadSuspended=flag;
+		}
+		else
+		{
+			c=1;
+			//this.flag=true;
+			this.threadSuspended=flag;
+			//c=0;
+		}
+		//this.flag=false;
+	}
+
+
+
+
+
 
 }

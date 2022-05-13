@@ -124,6 +124,7 @@ public class ZooFrame extends JFrame implements ActionListener
 		this.setVisible(true);
 		this.pack();
 		this.setSize(800,600);
+		m1.getThread().start();
 
 	}
 	@Override
@@ -132,7 +133,6 @@ public class ZooFrame extends JFrame implements ActionListener
 		if (e.getSource()==exit)
 		{
 			System.exit(0);
-
 		}
 		
 		if (e.getSource()==image)
@@ -153,17 +153,6 @@ public class ZooFrame extends JFrame implements ActionListener
 		
 		if(e.getSource()==none)
 		{
-			/*
-			m.setNatural();
-			m.repaint();
-			m.setVisible(true);
-			frame.setVisible(true);
-
-
-			this.remove(label);
-			this.getContentPane().setBackground(null);
-
-			 */
 			m1.setNone();
 		}
 		
@@ -193,7 +182,6 @@ public class ZooFrame extends JFrame implements ActionListener
 			if (m1.getI()!=10)
 			{
 				a=new AddAnimalDialog(m1,this);
-				//m1.updatei(1);
 			}
 			else
 			{
@@ -282,6 +270,19 @@ public class ZooFrame extends JFrame implements ActionListener
 		if (e.getSource()==food)
 		{
 			new Food(m1);
+		}
+
+		if (e.getSource()==sleep)
+		{
+			try {
+				m1.sleepAll();
+			} catch (InterruptedException ex) {
+				throw new RuntimeException(ex);
+			}
+		}
+		if (e.getSource()==wakeUp)
+		{
+			m1.wakeAll();
 		}
 	}
 
