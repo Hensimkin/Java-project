@@ -41,7 +41,9 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	private int c=0;
 
 
-
+	/**
+	 * run function that move the animal on the screen
+	 */
 	public void run()
 	{
 		while(flag)
@@ -189,7 +191,7 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	/**
 	 * set the diet of the animal
 	 * @param diet
-	 * @return
+	 * @return true
 	 */
 	public boolean setDiet(IDiet diet)
 	{
@@ -211,24 +213,34 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	
 	
 	public abstract String toString();
-	
-	
-	
+
+
+	/**
+	 *
+	 * @return the diet of the animal
+	 */
 	public IDiet getDiet()
 	{
 		return this.diet;
 	}
-	
-	
-	
+
+
+	/**
+	 *
+	 * @return the weight of the animal
+	 */
 	public double getWeight()
 	{
 		MessageUtility.logGetter(this.name, "getWeight", this.weight);
 		return this.weight;
 	}
-	
-	
-	
+
+
+	/**
+	 *
+	 * @param name the name
+	 * @return true
+	 */
 	public boolean setName(String name)
 	{
 		this.name=name;
@@ -263,28 +275,46 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 			return 0;
 		}
 	}
-	
+
+	/**
+	 *
+	 * @return how much the animal eat
+	 */
 	public int getEatCount()
 	{
 		return this.eatCount;
 	}
-	
+
+	/**
+	 *
+	 * @return the name of the animal
+	 */
 	public String getAnimalName()
 	{
 		return this.name;
 	}
-	
+
+	/**
+	 *
+	 * @return the path of the picture
+	 */
 	public String getPicturePatch()
 	{
 		return this.PICTURE_PATH;
 	}
-	
+
+	/**
+	 *
+	 * @return the size of the animal
+	 */
 	public int getSize()
 	{
 		return this.size;
 	}
-	
-	
+
+	/**
+	 * increase the eat count of the animal by 1
+	 */
 	public void eatInc()
 	{
 		this.eatCount++;
@@ -300,30 +330,47 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	{
 		return this.coordChanged;
 	}
-	
+
+	/**
+	 *
+	 * @return the color of the animal
+	 */
 	public String getColor()
 	{
 		return this.col;
 	}
-	
+
+	/**
+	 *
+	 * @return the x location of the animal
+	 */
 	public int getX_dir()
 	{
 		return this.x_dir;
 	}
-	
-	
+
+	/**
+	 *
+	 * @return the y location of the animal
+	 */
 	public int getY_dir()
 	{
 		return this.y_dir;
 	}
-	
-	
+
+	/**
+	 * set x location of animal
+	 * @param num the x location
+	 */
 	public void setX_dir(int num)
 	{
 		this.x_dir=num;
 	}
-	
-	
+
+	/**
+	 * set y location of animal
+	 * @param num the y location
+	 */
 	public void setY_dir(int num)
 	{
 		 this.y_dir=num;
@@ -377,7 +424,11 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
     {
 		this.pan=z;
 	}
-	
+
+	/**
+	 * drow animal picture
+	 * @param nm
+	 */
 	public void loadImages(String nm)
 	{
 		try
@@ -422,6 +473,10 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	}
 
 
+	/**
+	 * suspend animal thread
+	 * @param flag
+	 */
 	public void setThreadSuspended(boolean flag)
 	{
 		if(flag==true)
