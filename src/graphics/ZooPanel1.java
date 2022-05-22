@@ -565,12 +565,22 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	{
 		return this.controller;
 	}
+
+
+	/**
+	 * move all the threads to sleep
+	 * @throws InterruptedException
+	 */
 	 public void sleepAll() throws InterruptedException {
 		 for(int i=0;i<this.i;i++)
 		 {
 			 array.get(i).setThreadSuspended(true);
 		 }
 	 }
+
+	/**
+	 * wake all the threads
+	 */
 	public void wakeAll()
 	{
 		for(int i=0;i<this.i;i++)

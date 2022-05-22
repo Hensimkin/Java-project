@@ -189,15 +189,6 @@ public class ZooFrame extends JFrame implements ActionListener
 			}
 
 		}
-		if (e.getSource()==sleep)
-		{
-
-		}
-
-		if (e.getSource()==wakeUp)
-		{
-
-		}
 		/*
 		if(e.getSource()==moveanimal)
 		{
