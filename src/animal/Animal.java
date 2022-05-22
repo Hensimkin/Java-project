@@ -10,6 +10,8 @@ import javax.imageio.ImageIO;
 import diet.*;
 import food.*;
 import mobility.*;
+import plants.Cabbage;
+import plants.Lettuce;
 import utilities.*;
 import graphics.*;
 
@@ -46,6 +48,7 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	{
 		while(flag)
 		{
+
 			while(this.threadSuspended)
 			{
 				System.out.println("action resumed2");
@@ -59,6 +62,114 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 			}
 			int newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
 			int newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
+			while(this.pan.returnplant()==true&&this.diet.canEat(EFoodType.VEGETABLE))
+			{
+				newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
+				newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
+				if(newx>800)
+				{
+					this.x_dir=-1;
+					newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
+				}
+				if(newx<0)
+				{
+					this.x_dir=1;
+					newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
+				}
+				if(newy>600)
+				{
+					this.y_dir=-1;
+					newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
+				}
+				if(newy<0)
+				{
+					this.y_dir=1;
+					newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
+				}
+				if(newx<350)
+				{
+					this.x_dir=1;
+					newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
+				}
+				if(newx>450)
+				{
+					this.x_dir=-1;
+					newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
+				}
+				if(newy<250)
+				{
+					this.y_dir=1;
+					newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
+				}
+				if(newy>350)
+				{
+					this.y_dir=-1;
+					newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
+				}
+				super.setLocation(new Point(newx,newy));
+				try
+				{
+					this.thread.sleep(50);
+				} catch (InterruptedException e)
+				{
+					throw new RuntimeException(e);
+				}
+				this.pan.repaint();
+			}
+			while(this.pan.returnmeat()==true&&this.diet.canEat(EFoodType.MEAT))
+			{
+				newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
+				newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
+				if(newx>800)
+				{
+					this.x_dir=-1;
+					newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
+				}
+				if(newx<0)
+				{
+					this.x_dir=1;
+					newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
+				}
+				if(newy>600)
+				{
+					this.y_dir=-1;
+					newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
+				}
+				if(newy<0)
+				{
+					this.y_dir=1;
+					newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
+				}
+				if(newx<350)
+				{
+					this.x_dir=1;
+					newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
+				}
+				if(newx>450)
+				{
+					this.x_dir=-1;
+					newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
+				}
+				if(newy<250)
+				{
+					this.y_dir=1;
+					newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
+				}
+				if(newy>350)
+				{
+					this.y_dir=-1;
+					newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
+				}
+				super.setLocation(new Point(newx,newy));
+				try
+				{
+					this.thread.sleep(50);
+				} catch (InterruptedException e)
+				{
+					throw new RuntimeException(e);
+				}
+				this.pan.repaint();
+			}
 			if(newx>800)
 			{
 				this.x_dir=-1;
@@ -72,13 +183,14 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 			if(newy>600)
 			{
 				this.y_dir=-1;
-				newy=super.getLocation().getY() + this.horSpeed * this.y_dir;
+				newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
 			}
 			if(newy<0)
 			{
 				this.y_dir=1;
-				newy=super.getLocation().getY() + this.horSpeed * this.y_dir;
+				newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
 			}
+
 			super.setLocation(new Point(newx,newy));
 			try
 			{
@@ -133,6 +245,20 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 			System.out.println("animal suspended45");
 			this.notifyAll();
 		}
+	}
+
+
+	public synchronized boolean canet()
+	{
+		if(this.pan.returnplant()==true)
+		{
+			if(this.diet.canEat(this.pan.replant())==true)
+			{
+				return true;
+			}
+			return false;
+		}
+		return false;
 	}
 
 	/**

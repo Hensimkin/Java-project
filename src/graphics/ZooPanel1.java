@@ -12,7 +12,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import animal.*;
 import food.EFoodType;
-import food.IEdible;
 import meat.Meat;
 import plants.*;
 
@@ -580,6 +579,52 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 			array.get(i).setThreadSuspended(false);
 			array.get(i).setResumed();
 		}
+	}
+
+	public boolean isplant()
+	{
+		if (this.plant!=null)
+		{
+			return true;
+		}
+		return false;
+	}
+
+	public boolean ismeat()
+	{
+		if (this.meat!=null)
+		{
+			return true;
+		}
+		return false;
+	}
+
+	public boolean returnplant()
+	{
+		if(this.plant!=null)
+		{
+			return true;
+		}
+		return false;
+	}
+
+
+	public boolean returnmeat()
+	{
+		if(this.meat!=null)
+		{
+			return true;
+		}
+		return false;
+	}
+	public EFoodType replant()
+	{
+		return EFoodType.VEGETABLE;
+	}
+
+	public EFoodType remeat()
+	{
+		return EFoodType.MEAT;
 	}
 
 

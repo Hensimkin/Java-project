@@ -41,7 +41,7 @@ public class Cabbage extends Plant
 	@Override
 	public void drawObject(Graphics g)
 	{
-		g.drawImage(img, zoo.getHeight(), 300, 40, 40, zoo);
+		g.drawImage(img, 400, 300, 40, 40, zoo);
 	}
 
 	@Override
