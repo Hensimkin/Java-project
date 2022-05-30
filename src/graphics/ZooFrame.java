@@ -57,7 +57,7 @@ public class ZooFrame extends JFrame implements ActionListener
 
 	private JTable table;
     private Table z;
-	
+	private String type;
 	
 	
 	public ZooFrame()
@@ -127,6 +127,12 @@ public class ZooFrame extends JFrame implements ActionListener
 		m1.getThread().start();
 
 	}
+
+	public void setType1(String s)
+	{
+		type=s;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) 
 	{
@@ -179,7 +185,9 @@ public class ZooFrame extends JFrame implements ActionListener
 
 		if(e.getSource()==addanimal)
 		{
-			a=new AddAnimalDialog(m1,this);
+			new Animsec(m1,this);
+			//a = new AddAnimalDialog(m1, this);
+
 		}
 		/*
 		if(e.getSource()==moveanimal)

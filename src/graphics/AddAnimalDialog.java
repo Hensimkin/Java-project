@@ -18,6 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 import animal.*;
+import factory.AbstractFactory;
+import factory.FactoryProducer;
 
 /**
  * The class that take care of add animal option
@@ -42,12 +44,18 @@ public class AddAnimalDialog extends JDialog implements ActionListener
     static int lionc=1,bearc=1,elephantc=1,giraffec=1,turtlec=1;
     String name;
     ZooPanel1 zoo;
+	private String st;
+
+
+
+	private AbstractFactory animalfactory;
 	/**
 	 * Default Contractor that add buttons to the panel 
 	 */
-	public AddAnimalDialog(ZooPanel1 zoo,ZooFrame frame)
+	public AddAnimalDialog(ZooPanel1 zoo,ZooFrame frame,String s)
 	{
 		super(frame,"Add animal",true);
+		this.st=s;
 		button=new JButton("Accept");
 		button.addActionListener(this);
 		JLabel label=new JLabel("Choose animal");
@@ -58,13 +66,28 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 		JLabel label6=new JLabel("Press to Finish");
 		Integer numbers[]= {1,2,3,4,5,6,7,8,9,10};
 		Integer numbers2[]= {1,2,3,4,5,6,7,8,9,10};
+		String carnivore[]= {"Lion"};
+		String omnivore[]={"Bear"};
+		String herbivore[]={"Elephant","Giraffe","Turtle"};
 		String animals[]= {"Lion","Bear","Elephant","Giraffe","Turtle"};
 		String colors[]= {"Natural","Blue","Red"};
 		this.setLayout(new GridLayout(6,1));
 		this.setSize(400,200);
 		//this.setVisible(true);
 		//this.setTitle("Add Animal");
-		list=new JComboBox(animals);
+		//new Animsec(zoo);
+		if (s=="carnivore")
+		{
+			list=new JComboBox(carnivore);
+		}
+		if(s=="herbivore")
+		{
+			list=new JComboBox(herbivore);
+		}
+		if(s=="omnivore")
+		{
+			list=new JComboBox(omnivore);
+		}
 		hor=new JComboBox(numbers);
 		ver=new JComboBox(numbers2);
 		list.addActionListener(this);
@@ -89,6 +112,7 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 		this.add(button);
 		this.zoo=zoo;
 		this.setVisible(true);
+
 	}
 
 	/**
@@ -170,12 +194,58 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 				{
 					if(zoo.getI()<2)
 					{
+						if(st=="carnivore")
+						{
+							name="Lion"+lionc;
+							lionc++;
+							this.animalfactory= FactoryProducer.getFactory(st);
+							object= animalfactory.getAnimal("Lion",name,(int)size,c,num1,num2,zoo);
+							object.setWeight((int) (size*0.8));
+
+						}
+						if(st=="omnivore")
+						{
+							name="Bear"+bearc;
+							bearc++;
+							this.animalfactory= FactoryProducer.getFactory(st);
+							object= animalfactory.getAnimal("Bear",name,(int)size,c,num1,num2,zoo);
+							object.setWeight((int) (size*1.5));
+						}
+						if(st=="herbivore")
+						{
+							if(type=="Elephant")
+							{
+								name="Elephant"+elephantc;
+								elephantc++;
+								this.animalfactory= FactoryProducer.getFactory(st);
+								object= animalfactory.getAnimal("Elephant",name,(int)size,c,num1,num2,zoo);
+								object.setWeight((int) (size*10));
+							}
+							if(type=="Giraffe")
+							{
+								name="Giraffe"+giraffec;
+								giraffec++;
+								this.animalfactory= FactoryProducer.getFactory(st);
+								object= animalfactory.getAnimal("Giraffe",name,(int)size,c,num1,num2,zoo);
+								object.setWeight((int) (size*2.2));
+							}
+							if(type=="Turtle")
+							{
+								name="Turtle"+turtlec;
+								turtlec++;
+								this.animalfactory= FactoryProducer.getFactory(st);
+								object= animalfactory.getAnimal("Turtle",name,(int)size,c,num1,num2,zoo);
+								object.setWeight((int) (size*0.5));
+							}
+						}
+						/*
 						if(type=="Lion")
 						{
 							name="Lion"+lionc;
 							lionc++;
 							//MoveAnimalDialog.allAniaml.addItem(name);
 							//size=(int) (size*0.8);
+
 							object=new Lion(name,(int)size,c,num1,num2,zoo);
 							object.setWeight((int) (size*0.8));
 							ZooPanel1.array.add(object);
@@ -189,7 +259,11 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 							ZooPanel1.data[zoo.getI()][5]=object.getEatCount();
 							zoo.updatei(1);
 							zoo.updatetrd(object);
+
+
 						}
+
+
 						if(type=="Bear")
 						{
 							name="Bear"+bearc;
@@ -269,13 +343,71 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 							ZooPanel1.data[zoo.getI()][5]=object.getEatCount();
 							zoo.updatei(1);
 							zoo.updatetrd(object);
+
+
 						}
+
+						 */
+						ZooPanel1.array.add(object);
+						ZooPanel1.data[zoo.getI()][0]=name;
+						ZooPanel1.data[zoo.getI()][1]=c;
+						ZooPanel1.data[zoo.getI()][2]=object.getWeight();
+						ZooPanel1.data[zoo.getI()][3]=num1;
+						ZooPanel1.data[zoo.getI()][4]=num2;
+						ZooPanel1.data[zoo.getI()][5]=object.getEatCount();
+						zoo.updatei(1);
+						zoo.updatetrd(object);
 						JOptionPane.showMessageDialog(null, "Animal added");
 						zoo.manageZoo();
 						dispose();
 					}
 					else
 					{
+						if(st=="carnivore")
+						{
+							name="Lion"+lionc;
+							lionc++;
+							this.animalfactory= FactoryProducer.getFactory(st);
+							object= animalfactory.getAnimal("Lion",name,(int)size,c,num1,num2,zoo);
+							object.setWeight((int) (size*0.8));
+
+						}
+						if(st=="omnivore")
+						{
+							name="Bear"+bearc;
+							bearc++;
+							this.animalfactory= FactoryProducer.getFactory(st);
+							object= animalfactory.getAnimal("Bear",name,(int)size,c,num1,num2,zoo);
+							object.setWeight((int) (size*1.5));
+						}
+						if(st=="herbivore")
+						{
+							if(type=="Elephant")
+							{
+								name="Elephant"+elephantc;
+								elephantc++;
+								this.animalfactory= FactoryProducer.getFactory(st);
+								object= animalfactory.getAnimal("Elephant",name,(int)size,c,num1,num2,zoo);
+								object.setWeight((int) (size*10));
+							}
+							if(type=="Giraffe")
+							{
+								name="Giraffe"+giraffec;
+								giraffec++;
+								this.animalfactory= FactoryProducer.getFactory(st);
+								object= animalfactory.getAnimal("Giraffe",name,(int)size,c,num1,num2,zoo);
+								object.setWeight((int) (size*2.2));
+							}
+							if(type=="Turtle")
+							{
+								name="Turtle"+turtlec;
+								turtlec++;
+								this.animalfactory= FactoryProducer.getFactory(st);
+								object= animalfactory.getAnimal("Turtle",name,(int)size,c,num1,num2,zoo);
+								object.setWeight((int) (size*0.5));
+							}
+						}
+						/*
 						if(type=="Lion")
 						{
 							name = "Lion" + lionc;
@@ -318,13 +450,15 @@ public class AddAnimalDialog extends JDialog implements ActionListener
 						{
 							name="Turtle"+turtlec;
 							turtlec++;
-							//MoveAnimalDialog.allAniaml.addItem(name);
-							//size=(int) (size*0.5);
 							object=new Turtle(name,(int)size,c,num1,num2,zoo);
 							object.setWeight((int) (size*0.5));
 							zoo.updatetrd(object);
 							zoo.addanimal(object);
 						}
+
+						 */
+						zoo.updatetrd(object);
+						zoo.addanimal(object);
 						JOptionPane.showMessageDialog(null, "Animal added");
 						zoo.manageZoo();
 						dispose();
