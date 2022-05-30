@@ -1,6 +1,7 @@
 package plants;
 
 import graphics.ZooPanel1;
+import meat.Meat;
 import utilities.MessageUtility;
 
 import javax.imageio.ImageIO;
@@ -16,6 +17,7 @@ import java.io.IOException;
 
 public class Cabbage extends Plant
 {
+	private static Cabbage cabbage=null;
 	private  ZooPanel1 zoo;
 	BufferedImage img=null;
 	public Cabbage(ZooPanel1 zoo)
@@ -49,6 +51,13 @@ public class Cabbage extends Plant
 		return null;
 	}
 
-
+	public static Cabbage getInstance(ZooPanel1 zoo)
+	{
+		if(cabbage==null)
+		{
+			cabbage=new Cabbage(zoo);
+		}
+		return cabbage;
+	}
 
 }

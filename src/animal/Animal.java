@@ -41,6 +41,8 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	protected boolean threadSuspended=false;
 	private boolean flag=true;
 	private int c=0;
+	int v=1;
+	int saver;
 
 
 	/**
@@ -62,6 +64,7 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 					throw new RuntimeException(e);
 				}
 			}
+			//this.verSpeed=saver;
 			int newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
 			int newy=super.getLocation().getY() + this.verSpeed * this.y_dir;
 			while(this.pan.returnplant()==true&&this.diet.canEat(EFoodType.VEGETABLE))
@@ -152,6 +155,10 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 					this.x_dir=-1;
 					newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
 				}
+				if(newy==300)
+				{
+					this.verSpeed=0;
+				}
 				if(newy<250)
 				{
 					this.y_dir=1;
@@ -171,6 +178,11 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 					throw new RuntimeException(e);
 				}
 				this.pan.repaint();
+			}
+
+			if(verSpeed==0)
+			{
+				this.verSpeed=saver;
 			}
 			if(newx>800)
 			{
@@ -288,7 +300,8 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 		this.verSpeed=verSpeed;
 		this.name=name;
 		this.pan=z;
-		this.thread=new Thread(this);
+		this.saver=verSpeed;
+		//this.thread=new Thread(this);
 	}
 	
 	
@@ -618,6 +631,26 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 			//c=0;
 		}
 		//this.flag=false;
+	}
+
+	public void setFlag(boolean t)
+	{
+		this.flag=t;
+	}
+
+	public int getHorSpeed()
+	{
+		return this.horSpeed;
+	}
+
+	public int getVerSpeedSpeed()
+	{
+		return this.verSpeed;
+	}
+
+	public void setVerSpeed(int speed)
+	{
+		this.verSpeed=speed;
 	}
 
 

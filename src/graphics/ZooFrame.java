@@ -179,15 +179,7 @@ public class ZooFrame extends JFrame implements ActionListener
 
 		if(e.getSource()==addanimal)
 		{
-			if (m1.getI()!=10)
-			{
-				a=new AddAnimalDialog(m1,this);
-			}
-			else
-			{
-				JOptionPane.showMessageDialog(null, "Can't add more animals","Error",JOptionPane.WARNING_MESSAGE);
-			}
-
+			a=new AddAnimalDialog(m1,this);
 		}
 		/*
 		if(e.getSource()==moveanimal)
@@ -242,8 +234,13 @@ public class ZooFrame extends JFrame implements ActionListener
 					AddAnimalDialog.turtlec--;
 				}
 			}
+			for(int i=0;i<ZooPanel1.array.size();i++)
+			{
+				ZooPanel1.array.get(i).setFlag(false);
+			}
+			int k=ZooPanel1.array.size();
 			ZooPanel1.array.clear();
-			for(int i=0;i<m1.getI();i++)
+			for(int i=0;i<k;i++)
 			{
 				ZooPanel1.data[i][0]=null;
 				ZooPanel1.data[i][1]=null;
@@ -251,7 +248,6 @@ public class ZooFrame extends JFrame implements ActionListener
 				ZooPanel1.data[i][3]=null;
 				ZooPanel1.data[i][4]=null;
 				ZooPanel1.data[i][5]=null;
-
 			}
 			ZooPanel1.data[10][5]=0;
 			m1.setI(0);

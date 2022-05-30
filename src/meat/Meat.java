@@ -42,7 +42,11 @@ public class Meat implements IEdible,IDrawable
     /**
      *
      */
-    public Meat(ZooPanel1 zoo) {
+
+
+    private static Meat meat=null;
+    public Meat(ZooPanel1 zoo)
+    {
         Random rand = new Random();
        // int x = rand.nextInt(30);
        // int y = rand.nextInt(12);
@@ -184,6 +188,16 @@ public class Meat implements IEdible,IDrawable
 
     public String getColor2() {
         return "hi";
+    }
+
+
+    public static Meat getInstance(ZooPanel1 zoo)
+    {
+        if(meat==null)
+        {
+            meat=new Meat(zoo);
+        }
+        return meat;
     }
 
 

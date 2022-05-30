@@ -13,6 +13,9 @@ import java.io.IOException;
 public class Lettuce extends Plant {
 	private  ZooPanel1 zoo;
 	BufferedImage img=null;
+
+
+	private static Lettuce lettuce=null;
 	public Lettuce(ZooPanel1 zoo)
 	{
 		super(zoo);
@@ -40,5 +43,15 @@ public class Lettuce extends Plant {
 	@Override
 	public String getColor() {
 		return null;
+	}
+
+
+	public static Lettuce getInstance(ZooPanel1 zoo)
+	{
+		if(lettuce==null)
+		{
+			lettuce=new Lettuce(zoo);
+		}
+		return lettuce;
 	}
 }

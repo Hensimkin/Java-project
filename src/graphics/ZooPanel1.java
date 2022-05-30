@@ -6,7 +6,12 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -36,6 +41,7 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	//static Animal[] array=new Animal[10];
 	//static ArrayList<Animal> array=new ArrayList<Animal>(10);
 	static ArrayList<Animal> array = new ArrayList<Animal>();
+	Queue<Animal> queue=new LinkedList<Animal>();
 	JTable table;
 	static String[] col = {"Animal", "Color", "weight", "Hor.Speed", "Ver.Speed", "Eat Counter"};
 	static Object[][] data = new Object[11][6];
@@ -48,6 +54,8 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	private Thread controller;
 
 	private boolean flag=true;
+
+	private Executor executor;
 
 
 
@@ -85,6 +93,7 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		data[10][0]="Total";
 		data[10][5]=0;
 		this.controller=new Thread(this);
+		this.executor = Executors.newFixedThreadPool(2);
 	}
 
 
@@ -171,9 +180,21 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 							array.get(i).setWeight(array.get(i).getWeight()*1.1);
 							setWeighInc(array.get(i).getName(),array.get(i));
 							this.i--;
+							array.get(j).setFlag(false);
 							array.remove(j);
 							this.repaint();
 							deleteData(name1);
+							if(!queue.isEmpty())
+							{
+								array.add(queue.poll());
+								this.i++;
+								data[this.i-1][0]=array.get(this.i-1).getName();
+								data[this.i-1][1]=array.get(this.i-1).getColor();
+								data[this.i-1][2]=array.get(this.i-1).getWeight();
+								data[this.i-1][3]=array.get(this.i-1).getHorSpeed();
+								data[this.i-1][4]=array.get(this.i-1).getVerSpeedSpeed();
+								data[this.i-1][5]=array.get(this.i-1).getEatCount();
+							}
 							break;
 						}
 					}
@@ -276,18 +297,19 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		if(num==1)
 		{
 			this.meat=null;
-           this.plant=new Cabbage(this);
-		   this.plant.loadImages("cabbage.png");
-		  // this.setCheck(2);
-		   this.repaint();
-		   this.manageZoo();
-		   this.setCheck(0);
+			this.plant=new Cabbage(this);
+			this.plant=Cabbage.getInstance(this);
+			this.plant.loadImages("cabbage.png");
+			this.repaint();
+			this.manageZoo();
+			this.setCheck(0);
 
 		}
 		if(num==2)
 		{
 			this.meat=null;
-			this.plant=new Lettuce(this);
+			//this.plant=new Lettuce(this);
+			this.plant=Lettuce.getInstance(this);
 			this.plant.loadImages("lettuce.png");
 			// this.setCheck(2);
 			this.repaint();
@@ -298,7 +320,8 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		if(num==3)
 		{
 			this.plant=null;
-			this.meat=new Meat(this);
+			//this.meat=new Meat(this);
+			this.meat=Meat.getInstance(this);
 			this.meat.loadImages("meat.gif");
 			// this.setCheck(2);
 			this.repaint();
@@ -398,10 +421,11 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 					double distance=ok.calcDistance(meat.getLocation());
 					if (distance<=ok.getEAT_DISTANCE())
 					{
-						//ok.eatInc();
+						//int v=ok.getVerSpeedSpeed();
 						this.meat=null;
 						this.repaint();
 						JOptionPane.showMessageDialog(null, "Animal has eat","success",JOptionPane.INFORMATION_MESSAGE);
+						//ok.setVerSpeed(v);
 						ok.setWeight(ok.getWeight()*1.1);
 						setWeighInc(ok.getName(),ok);
 						ok.eatInc();
@@ -636,6 +660,23 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	{
 		return EFoodType.MEAT;
 	}
+
+    public void updatetrd(Animal animal)
+	{
+		this.executor.execute (animal);
+	}
+
+	public Queue retque()
+	{
+		return this.queue;
+	}
+
+	public void addanimal(Animal a)
+	{
+		this.queue.add(a);
+	}
+
+
 
 
 }
