@@ -17,7 +17,7 @@ import javax.imageio.ImageIO;
  * @author baroh
  *
  */
-public abstract class Plant implements IEdible, Ilocatable,IDrawable {
+public abstract class Plant implements IEdible, Ilocatable,IDrawable,Cloneable {
 	/**
 	 * 
 	 */
@@ -173,6 +173,12 @@ public abstract class Plant implements IEdible, Ilocatable,IDrawable {
 	public void drawObject(Graphics g)
 	{
 		g.drawImage(img, 400, 300, 40, 40, zoo);
+	}
+
+
+	public Object clone()throws CloneNotSupportedException
+	{
+		return super.clone();
 	}
 
 }

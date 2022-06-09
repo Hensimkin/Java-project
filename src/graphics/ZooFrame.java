@@ -50,6 +50,9 @@ public class ZooFrame extends JFrame implements ActionListener
 	private JButton sleep;
 	private JButton wakeUp;
 
+	private JButton color;
+	private JButton saveState;
+	private JButton restoreState;
 
 	//private Object[][] data = new Object[10][6];
 
@@ -102,12 +105,21 @@ public class ZooFrame extends JFrame implements ActionListener
 		//moveanimal=new JButton("Move Animal");
 		//downb.add(this.moveanimal);
 		//this.moveanimal.addActionListener(this);
+		this.color=new JButton("Color");
+		downb.add(this.color);
+		this.color.addActionListener(this);
 		wakeUp=new JButton("Wake up");
 		downb.add(this.wakeUp);
 		this.wakeUp.addActionListener(this);
 		clear=new JButton("Clear");
 		downb.add(this.clear);
 		this.clear.addActionListener(this);
+		saveState=new JButton("Save State");
+		downb.add(this.saveState);
+		this.saveState.addActionListener(this);
+		restoreState=new JButton("Restore State");
+		downb.add(this.restoreState);
+		this.restoreState.addActionListener(this);
 		food=new JButton("Food");
 		downb.add(this.food);
 		this.food.addActionListener(this);
@@ -124,7 +136,8 @@ public class ZooFrame extends JFrame implements ActionListener
 		this.setVisible(true);
 		this.pack();
 		this.setSize(800,600);
-		m1.getThread().start();
+		m1.controllerst();
+		//m1.getThread().start();
 
 	}
 
@@ -278,6 +291,35 @@ public class ZooFrame extends JFrame implements ActionListener
 		if (e.getSource()==wakeUp)
 		{
 			m1.wakeAll();
+		}
+
+		if(e.getSource()==color)
+		{
+			if (m1.getI()!=0)
+			{
+				new ColorChange(m1);
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Can't change color","Error",JOptionPane.WARNING_MESSAGE);
+			}
+
+		}
+		if(e.getSource()==saveState)
+		{
+			try {
+				m1.savememento();
+			} catch (CloneNotSupportedException ex) {
+				throw new RuntimeException(ex);
+			}
+		}
+		if(e.getSource()==restoreState)
+		{
+			try {
+				m1.restoremomento();
+			} catch (CloneNotSupportedException ex) {
+				throw new RuntimeException(ex);
+			}
 		}
 	}
 

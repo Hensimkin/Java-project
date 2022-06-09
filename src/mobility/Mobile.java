@@ -1,12 +1,14 @@
 package mobility;
 import java.lang.Math;
+import java.util.Observable;
 
 /**
  * mobile is an abstract class that implements Ilocatable that calc all the distance and location of animal
  * @author Hen simkin 
  * @author Adir melker
  */
-public abstract class Mobile implements Ilocatable  {
+public abstract class Mobile extends Observable implements Ilocatable
+{
 
 	private Point location;
 	private double totalDistance;

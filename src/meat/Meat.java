@@ -19,7 +19,7 @@ import java.util.Random;
  * @author Adir Melker 316614569 and Hen Simkin 208514109
  *
  */
-public class Meat implements IEdible,IDrawable
+public class Meat implements IEdible,IDrawable,Cloneable
 {
     private double height;
     /**
@@ -198,6 +198,11 @@ public class Meat implements IEdible,IDrawable
             meat=new Meat(zoo);
         }
         return meat;
+    }
+
+    public Object clone()throws CloneNotSupportedException
+    {
+        return super.clone();
     }
 
 

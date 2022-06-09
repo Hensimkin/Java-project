@@ -146,6 +146,11 @@ public class Bear extends Roar
 			super.setX_dir(-1);
 		}
 	}
+
+	public String gettype()
+	{
+		return "bea";
+	}
 	
 	
 

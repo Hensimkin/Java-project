@@ -143,6 +143,12 @@ public class Giraffe extends Chew
 			super.setX_dir(-1);
 		}
 	}
+
+
+	public String gettype()
+	{
+		return "grf";
+	}
 	
 	
 }

@@ -25,7 +25,7 @@ import plants.*;
  * @author Adir Melker 316614569 and Hen Simkin 208514109
  *
  */
-public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
+public class ZooPanel1 extends JPanel implements ActionListener {
 	private int i = 0;
 	private Plant plant=null;
 	Meat meat=null;
@@ -51,14 +51,17 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 	private Image pic4;
 	//private JLabel label=new JLabel();
 	private int t2=0;
-	private Thread controller;
+	//private Thread controller;
+	private Controller controller;
 
 	private boolean flag=true;
 
 	private Executor executor;
 
+	private Caretaker caretaker;
+	private Memento memento;
 
-
+	/*
 	@Override
 	public void run()
 	{
@@ -72,6 +75,8 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 			}
 		}
 	}
+
+	 */
 
 	/**
 	 * Default Contractor that add buttons to the panel
@@ -92,8 +97,10 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		this.setVisible(true);
 		data[10][0]="Total";
 		data[10][5]=0;
-		this.controller=new Thread(this);
+		//this.controller=new Thread(this);
+		controller=new Controller(this);
 		this.executor = Executors.newFixedThreadPool(2);
+		caretaker=new Caretaker(this);
 	}
 
 
@@ -297,7 +304,7 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		if(num==1)
 		{
 			this.meat=null;
-			this.plant=new Cabbage(this);
+			//this.plant=new Cabbage(this);
 			this.plant=Cabbage.getInstance(this);
 			this.plant.loadImages("cabbage.png");
 			this.repaint();
@@ -584,11 +591,13 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		this.i=num;
 	}
 
-
+    /*
 	public Thread getThread()
 	{
 		return this.controller;
 	}
+
+     */
 
 
 	/**
@@ -676,7 +685,35 @@ public class ZooPanel1 extends JPanel implements Runnable ,ActionListener {
 		this.queue.add(a);
 	}
 
+    public ZooPanel1 getZoo()
+	{
+		return this;
+	}
 
 
+	public void controllerst()
+	{
+		this.controller.start();
+	}
+
+	public Controller getController()
+	{
+		return this.controller;
+	}
+
+	public void setPlant(Plant plant)
+	{
+		this.plant=plant;
+	}
+
+	public void savememento() throws CloneNotSupportedException
+	{
+		memento=new Memento(this.queue,plant,meat);
+		caretaker.save(memento);
+	}
+
+	public void restoremomento() throws CloneNotSupportedException {
+		caretaker.restorestate();
+	}
 
 }

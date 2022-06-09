@@ -137,4 +137,10 @@ public class Lion extends Roar
 		}
 	}
 
+
+	public String gettype()
+	{
+		return "lio";
+	}
+
 }

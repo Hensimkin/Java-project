@@ -20,7 +20,7 @@ import graphics.*;
  * @author Hen simkin 
  * @author Adir melker
  */
-public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAnimalBehavior,Runnable
+public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAnimalBehavior,Runnable,Cloneable
 {
 	private String name;
 	private double weight;
@@ -119,6 +119,8 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 				{
 					throw new RuntimeException(e);
 				}
+				setChanges(true);
+				pan.getController().not();
 				this.pan.repaint();
 			}
 			while(this.pan.returnmeat()==true&&this.diet.canEat(EFoodType.MEAT))
@@ -129,6 +131,7 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 				{
 					this.x_dir=-1;
 					newx=super.getLocation().getX() + this.horSpeed * this.x_dir;
+
 				}
 				if(newx<0)
 				{
@@ -177,6 +180,9 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 				{
 					throw new RuntimeException(e);
 				}
+				setChanges(true);
+				pan.getController().not();
+				//notifyObservers();
 				this.pan.repaint();
 			}
 
@@ -213,6 +219,9 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 			{
 				throw new RuntimeException(e);
 			}
+			setChanges(true);
+			pan.getController().not();
+			//notifyObservers();
 			this.pan.repaint();
 		}
 		/*
@@ -288,6 +297,8 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 		super(point);
 		MessageUtility.logConstractor("Animal", name);
 		setName(name);
+		this.coordChanged=true;
+		notifyObservers();
 		//this.thread=new Thread(this);
 	}
 	
@@ -301,6 +312,9 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 		this.name=name;
 		this.pan=z;
 		this.saver=verSpeed;
+		this.coordChanged=true;
+		//notifyObservers();
+		pan.getController().not();
 		//this.thread=new Thread(this);
 	}
 	
@@ -654,6 +668,18 @@ public abstract class Animal  extends Mobile implements  IEdible, IDrawable,IAni
 	}
 
 
+	public void setColor(String color)
+	{
+		this.col=color;
+	}
+
+	public abstract String gettype();
+
+
+	public Object clone()throws CloneNotSupportedException
+	{
+		return super.clone();
+	}
 
 
 
