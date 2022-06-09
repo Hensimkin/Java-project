@@ -99,7 +99,7 @@ public class ZooPanel1 extends JPanel implements ActionListener {
 		data[10][5]=0;
 		//this.controller=new Thread(this);
 		controller=new Controller(this);
-		this.executor = Executors.newFixedThreadPool(2);
+		this.executor = Executors.newFixedThreadPool(10);
 		caretaker=new Caretaker(this);
 	}
 

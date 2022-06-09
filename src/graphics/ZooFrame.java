@@ -198,7 +198,14 @@ public class ZooFrame extends JFrame implements ActionListener
 
 		if(e.getSource()==addanimal)
 		{
-			new Animsec(m1,this);
+			if(ZooPanel1.array.size()<=15)
+			{
+				new Animsec(m1,this);
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Can't add animals","Error",JOptionPane.WARNING_MESSAGE);
+			}
 			//a = new AddAnimalDialog(m1, this);
 
 		}
